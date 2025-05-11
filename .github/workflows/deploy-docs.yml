@@ -41,10 +41,7 @@ jobs:
                   cache: pnpm
 
             - name: Clean temp and rebuild temp files
-              run: |
-                rm -rf src/.vuepress/.temp
-                pnpm clean
-                pnpm build
+              run: rm -rf src/.vuepress/.temp
 
             # 運行建構指令碼
             - name: Build VuePress site
