@@ -28,7 +28,7 @@ jobs:
             - name: 安裝 pnpm
               uses: pnpm/action-setup@v2
               with:
-                  version: 8.6.2
+                  version: 8.6.3
                   # 使用 pnpm 安裝依賴
                   run_install: true
 
@@ -40,6 +40,11 @@ jobs:
                   # 快取 pnpm 依賴
                   cache: pnpm
 
+            - name: Clean temp and rebuild temp files
+              run: |
+                rm -rf src/.vuepress/.temp
+                pnpm clean
+                pnpm build
 
             # 運行建構指令碼
             - name: Build VuePress site
