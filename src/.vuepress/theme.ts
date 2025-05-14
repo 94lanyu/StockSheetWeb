@@ -83,6 +83,12 @@ export default hopeTheme({
             ]
         },
 
+        components: {
+            components: [
+                "VidStack"
+            ]
+        },
+
         // 啟用SEO
         seo: {
             customHead: head => {
