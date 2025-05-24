@@ -8,7 +8,7 @@ bgImageDark: https://theme-hope-assets.vuejs.press/bg/6-dark.svg
 bgImageStyle:
     background-attachment: fixed
 heroImage: /images/台股訂閱版/儀表板.gif
-heroText: 全自動股票管理表 | 懶魚程式
+heroText: 全自動股票管理表 | 懶魚
 heroFullScreen: true
 tagline: 只需做好交易紀錄，其餘的都幫你搞定～✨
 actions:

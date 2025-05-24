@@ -10,7 +10,7 @@ export default hopeTheme({
         url: "",
     },
 
-    // logo: "/logo.svg",
+    logo: "/logo.jpg",
 
     // repo: "vuepress-theme-hope/vuepress-theme-hope",
 
