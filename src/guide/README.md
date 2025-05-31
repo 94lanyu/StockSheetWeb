@@ -61,10 +61,7 @@ _台股訂閱版_ 提供三個月的免費試用時間，喜歡再訂閱！
         ![](/images/啟用步驟/啟用步驟_6成功.jpg =300x)
     :::
 
-    <VidStack
-    src="youtube/e2Xh9q0CgO8"
-    title="啟用示範影片"
-    />
+   <iframe src="https://www.youtube.com/embed/e2Xh9q0CgO8?si=8wQgyNFPTdXRRifP" title="啟用示範影片" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 2. 第一次需要設定券商的手續費折數優惠以及進位方式
 
