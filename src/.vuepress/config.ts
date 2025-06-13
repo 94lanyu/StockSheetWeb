@@ -13,7 +13,7 @@ export default defineUserConfig({
         // 網站圖標 favicon.ico
         ['link', {rel: 'icon', href: '/logo.ico'}],
         // Google Console search html 擁有全驗證
-        // ['meta', {name: 'google-site-verification', content: 'AdvLMReW9RFoWDOXEAm_koqL82b1ZwwKxlgrhaQtRnQ'}],
+        ['meta', {name: 'google-site-verification', content: 'AdvLMReW9RFoWDOXEAm_koqL82b1ZwwKxlgrhaQtRnQ'}],
         // Google Tag Manager 埋 code
         ['script', {}, `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
