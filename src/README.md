@@ -33,7 +33,7 @@ highlights:
         highlights:
 #            -   title: 运行 <code>pnpm create vuepress-theme-hope hope-project</code> 以创建一个新的主题项目。
             -   title: 步驟1. 填寫免費試用表單
-                link: https://docs.google.com/spreadsheets/d/
+                link: https://forms.gle/RsfJdnReB1pzahQM6
             -   title: 步驟2. 在 Gmail 信箱收信，透過信件內連結複製屬於自己的試算表
             -   title: 步驟3. 啟用並授權
 
