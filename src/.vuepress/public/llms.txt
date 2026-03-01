@@ -1,0 +1,44 @@
+# 全自動股票管理表
+
+> 基於 Google Sheets 的台股管理工具。只需輸入交易紀錄，系統即自動更新股票成交價、計算損益、產生視覺化圖表。提供免費試用，另有美股、歐股、港股版本。
+
+## 指南
+
+- [首頁](https://94lanyu.github.io/): 快速開始三步驟、主要功能介紹、試算表預覽
+- [使用指南](https://94lanyu.github.io/guide/): 使用流程、免費試用申請、訂閱方式與推薦獎勵
+
+## 功能
+
+- [自動更新股票成交價](https://94lanyu.github.io/guide/feature/%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0%E8%82%A1%E7%A5%A8%E6%88%90%E4%BA%A4%E5%83%B9.html): 開啟試算表後自動更新台股最新成交價，並自動觸發後續計算
+- [多種視覺化圖表](https://94lanyu.github.io/guide/feature/%E5%A4%9A%E7%A8%AE%E8%A6%96%E8%A6%BA%E5%8C%96%E5%9C%96%E8%A1%A8.html): 數字面板、圓餅圖、長條圖、時間線圖、走勢圖，股價變動時自動更新
+- [自動化計算](https://94lanyu.github.io/guide/feature/%E8%87%AA%E5%8B%95%E5%8C%96%E8%A8%88%E7%AE%97.html): 自動計算交易稅、手續費、已實現與未實現損益、報酬率
+- [自動記錄投資變化](https://94lanyu.github.io/guide/feature/%E8%87%AA%E5%8B%95%E8%A8%98%E9%8C%84%E6%8A%95%E8%B3%87%E8%AE%8A%E5%8C%96.html): 每週五自動記錄成本、市值、現金、損益，追蹤投資走勢
+- [輕鬆管理多家券商](https://94lanyu.github.io/guide/feature/%E8%BC%95%E9%AC%86%E7%AE%A1%E7%90%86%E5%A4%9A%E5%AE%B6%E5%88%B8%E5%95%86.html): 支援多券商分類管理，各別設定折讓手續費與零股手續費
+- [一鍵更新](https://94lanyu.github.io/guide/feature/%E4%B8%80%E9%8D%B5%E6%9B%B4%E6%96%B0.html): 手動觸發重新計算所有數據與圖表
+- [多種百分比圖](https://94lanyu.github.io/guide/feature/%E5%A4%9A%E7%A8%AE%E7%99%BE%E5%88%86%E6%AF%94%E5%9C%96.html): 持股比例、產業分布、券商分類、資金比例四種圓餅圖
+- [切換資料範圍的區間](https://94lanyu.github.io/guide/feature/%E5%88%87%E6%8F%9B%E8%B3%87%E6%96%99%E7%AF%84%E5%9C%8D%E7%9A%84%E5%8D%80%E9%96%93.html): 儀表板時間區間調整，可選年份或手動輸入起訖日期
+
+## 試算表分頁
+
+- [儀表板](https://94lanyu.github.io/guide/sheets/%E5%84%80%E8%A1%A8%E6%9D%BF.html): 集中呈現查詢區、數值面板、百分比圖、長條圖、時間線圖、走勢圖
+    - [交易紀錄](https://94lanyu.github.io/guide/sheets/%E4%BA%A4%E6%98%93%E7%B4%80%E9%8C%84.html): 手動輸入買賣交易，自動計算成本均價，平倉功能
+- [現金股利](https://94lanyu.github.io/guide/sheets/%E7%8F%BE%E9%87%91%E8%82%A1%E5%88%A9.html): 股利自動計算、股利記錄、存股計畫
+- [觀察](https://94lanyu.github.io/guide/sheets/%E8%A7%80%E5%AF%9F.html): 口袋名單、目標價設定、顏色提醒、產業與 ETF 分類
+- [持股與歷史](https://94lanyu.github.io/guide/sheets/%E6%8C%81%E8%82%A1%E8%88%87%E6%AD%B7%E5%8F%B2.html): 未平倉持股與已平倉歷史紀錄的欄位說明
+- [統計](https://94lanyu.github.io/guide/sheets/%E7%B5%B1%E8%A8%88.html): 依股票或日期篩選損益，支援內部報酬率（IRR/XIRR）計算
+- [券商與分類](https://94lanyu.github.io/guide/sheets/%E5%88%B8%E5%95%86%E8%88%87%E5%88%86%E9%A1%9E.html): 基本設定、資金紀錄、交易成本表、融資券利率設定
+- [股票代號](https://94lanyu.github.io/guide/sheets/%E8%82%A1%E7%A5%A8%E4%BB%A3%E8%99%9F.html): 自動取價設定與股票代號格式說明
+- [自動記錄](https://94lanyu.github.io/guide/sheets/%E8%87%AA%E5%8B%95%E8%A8%98%E9%8C%84.html): 每週六自動記錄數據，顯示於走勢圖
+- [融資券](https://94lanyu.github.io/guide/sheets/%E8%9E%8D%E8%B3%87%E5%88%B8.html): 融資融券介紹、整戶維持率計算、手動輸入與計算區
+
+## 版本與費用
+
+- [台股訂閱版](https://94lanyu.github.io/guide/version/%E5%8F%B0%E8%82%A1%E8%A8%82%E9%96%B1%E7%89%88.html): 主版本，支援台股，訂閱制費用 600元/3月、1,800元/年
+- [美股收費版](https://94lanyu.github.io/guide/version/%E7%BE%8E%E8%82%A1%E6%94%B6%E8%B2%BB%E7%89%88.html): 美股專用版本，NT$3,000，支援美股指數與匯率換算
+- [客製化](https://94lanyu.github.io/guide/version/%E5%AE%A2%E8%A3%BD%E5%8C%96.html): 跨市場總覽、權證版、港股版、歐股版等客製案例
+- [訂閱費用](https://94lanyu.github.io/guide/include/%E8%A8%82%E9%96%B1%E8%B2%BB%E7%94%A8.html): 完整費用方案對照表（3月、年、3年、5年）
+- [付款方式](https://94lanyu.github.io/guide/include/%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F.html): 信用卡與銀行轉帳付款流程
+
+## 常見問題
+
+- [常見問題](https://94lanyu.github.io/fqa/): 使用問題、功能說明、設定方式的 Q&A 彙整（35篇）

@@ -22,9 +22,9 @@ export default hopeTheme({
     // sidebar
     sidebar,
 
-    // footer: "默認頁尾",
+    footer: '<address><strong>全自動股票管理表 - 股票記帳、投資組合管理與自動更新</strong><br>作者：懶魚&nbsp;&nbsp;Email：<a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a></address>',
 
-    // displayFooter: true,
+    displayFooter: true,
 
     encrypt: {
         config: {
