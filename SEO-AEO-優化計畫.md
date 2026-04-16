@@ -24,7 +24,7 @@
 | 圖片 alt text | ✅ 已完成（第 2 週） |
 | Sitemap priority | ✅ 已完成（第 4 週，extendsPage 自動設定） |
 | 圖片壓縮（Core Web Vitals） | ✅ 已完成（第 4 週，GIF→WebP，logo.ico 3KB） |
-| FAQ URL 關鍵字化 | ❌ 長期規劃（需搭配 redirect） |
+| FAQ URL 關鍵字化 | ✅ 已完成（長期規劃，client-side redirect HTML stub） |
 
 ---
 
@@ -245,13 +245,21 @@ description: "台股訂閱版支援自動更新成交價、損益計算、多種
    - 最佳方案：改用 Cloudflare Pages 部署（支援 `_redirects` 規則）
 4. 更新所有站內指向舊 URL 的內部連結
 
+**✅ 實作完成（2026-04-16）**
+
+- 32 個 MD 檔案以 `git mv` 重新命名為關鍵字 slug
+- 5 個 FAQ 間交叉連結已同步更新
+- 32 個 HTML redirect stub 建立於 `src/.vuepress/public/fqa/`
+  - 採 `meta http-equiv="refresh"` + JS `location.replace()` 雙重 redirect
+  - GitHub Pages 不支援 server-side 301，使用 client-side redirect 替代
+  - 含 `<link rel="canonical">` 指向新 URL，避免 Google 收錄舊頁面
+
 **如何測試**
 
-1. Build 後確認新 URL 的 HTML 存在於 dist 目錄
-2. 用 `curl -I https://94lanyu.github.io/fqa/現金股利如何記錄.html` 確認 200
-3. 用 `curl -I https://94lanyu.github.io/fqa/2021-05-19.html` 確認 301（若有設 redirect）
-4. 送出新 sitemap 到 GSC 後，2-4 週內觀察新 URL 是否被收錄
-5. 用 [Ahrefs Webmaster Tools](https://ahrefs.com/webmaster-tools)（免費）確認舊 URL 的外部連結已透過 301 轉移
+1. Build 後確認新 URL 的 HTML 存在於 `dist/fqa/` 目錄（中文檔名）
+2. 確認 `dist/fqa/2021-05-19.html` 存在（redirect stub）並含 meta refresh
+3. 送出新 sitemap 到 GSC 後，2-4 週內觀察新 URL 是否被收錄
+4. 用 [Ahrefs Webmaster Tools](https://ahrefs.com/webmaster-tools)（免費）確認舊 URL 的外部連結流量轉移情況
 
 ---
 
@@ -475,7 +483,5 @@ cat src/.vuepress/dist/sitemap.xml | grep priority  # T-09
 第 2 週：T-03（meta description，從版本頁開始）+ T-06（alt text）
 第 3 週：T-04（FAQ Schema）+ T-08（Person Schema）
 第 4 週：T-09（Sitemap）+ T-10（圖片壓縮）
-長期規劃：T-05（FAQ URL slug，需搭配 redirect 方案確認後執行）
+長期規劃：T-05 ✅（FAQ URL slug，已完成，client-side redirect stub）
 ```
-
-**T-05 之所以最後執行**：URL 更動會暫時影響現有排名，需要先確保 redirect 機制完整，建議單獨一個 sprint 處理，不要和其他優化混在同一次 deploy。
