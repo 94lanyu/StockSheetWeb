@@ -1,4 +1,5 @@
 ---
+title: "全自動股票管理表作者介紹"
 pageInfo: false
 description: 全自動股票管理表作者懶魚，中途轉職工程師，為自己打造台股 Google 試算表管理工具，持續優化並開放給所有投資人使用。
 head:

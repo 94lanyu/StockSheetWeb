@@ -7,7 +7,7 @@ export default hopeTheme({
 
     author: {
         name: "懶魚",
-        url: "",
+        url: "https://94lanyu.github.io/LanYu.html",
     },
 
     logo: "/logo.webp",

@@ -180,7 +180,25 @@ export default defineUserConfig({
         if (!page.filePathRelative?.startsWith('fqa/')) return;
         const title = page.title;
         const description = page.frontmatter.description as string | undefined;
-        if (!title || !description) return;
+        if (!title) return;
+
+        // 從頁面原始 Markdown 提取純文字作為答案，比僅用 description 更完整
+        const rawContent = (page.content as string) || '';
+        // 先去除 YAML frontmatter（--- ... ---）
+        const contentBody = rawContent.replace(/^---[\s\S]*?---\s*\n?/, '');
+        const answerText = contentBody
+            .replace(/^#+\s+.*/gm, '')              // 移除標題列
+            .replace(/!\[[^\]]*\]\([^)]*\)/g, '')   // 移除圖片
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 連結 → 純文字
+            .replace(/\*\*([^*]+)\*\*/g, '$1')       // 移除粗體標記
+            .replace(/==([^=]+)==/g, '$1')            // 移除 mark 標記
+            .replace(/:::[\w\s]*\n/g, '')             // 移除 admonition 開標籤
+            .replace(/:::/g, '')                       // 移除 admonition 結標籤
+            .replace(/^[-*+]\s+/gm, '')               // 移除列表符號
+            .replace(/`([^`]+)`/g, '$1')              // 移除 inline code 標記
+            .replace(/\s+/g, ' ')
+            .trim()
+            .substring(0, 600) || description || '';
 
         const existingHead = (page.frontmatter.head as unknown[] | undefined) || [];
         page.frontmatter.head = [
@@ -193,7 +211,7 @@ export default defineUserConfig({
                     "name": title,
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": description
+                        "text": answerText
                     }
                 }
             })],
