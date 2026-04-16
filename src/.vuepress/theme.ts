@@ -10,7 +10,7 @@ export default hopeTheme({
         url: "",
     },
 
-    logo: "/logo.jpg",
+    logo: "/logo.webp",
 
     // repo: "vuepress-theme-hope/vuepress-theme-hope",
 
@@ -77,7 +77,9 @@ export default hopeTheme({
                     layout: "BlogType",
                     frontmatter: () => ({
                         title: "常見問題",
-                        sidebar: true
+                        description: "全自動股票管理表常見問題解答，涵蓋股價更新、損益計算、交易紀錄填寫、儀表板操作等 30+ 篇實用教學。",
+                        sidebar: true,
+                        sitemap: { priority: 0.7, changefreq: 'weekly' },
                     }),
                 },
             ]
@@ -90,7 +92,14 @@ export default hopeTheme({
         },
 
         // 啟用SEO插件 (GTM 已在 config.ts 配置)
-        seo: true,
+        seo: {
+            // config.title 改為 "懶魚" 以達到 "xxx | 懶魚" 的 title 格式，
+            // 但 og:site_name 需保持品牌名稱
+            ogp: (ogp) => ({
+                ...ogp,
+                'og:site_name': '全自動股票管理表',
+            }),
+        },
 
         // 啟用sitemap
         sitemap: {

@@ -1,13 +1,13 @@
 ---
 home: true
 icon: home
-title: 全自動股票管理表 - 股票記帳、投資組合管理與自動更新
-description: 自動股票管理表，輕鬆記錄股票交易、管理投資組合、即時股價更新，提供免費試用。讓你的投資管理變得更簡單，立即體驗！
+title: 全自動股票管理表 — 台股自動更新股價、損益計算、投資組合管理
+description: 只需填入交易紀錄，自動更新台股成交價、計算損益與手續費、生成視覺化圖表。Google 試算表免下載，複製立即可用。免費試用一個月。
 bgImage: https://theme-hope-assets.vuejs.press/bg/6-light.svg
 bgImageDark: https://theme-hope-assets.vuejs.press/bg/6-dark.svg
 bgImageStyle:
     background-attachment: fixed
-heroImage: /images/台股訂閱版/儀表板.gif
+heroImage: /images/台股訂閱版/儀表板.webp
 heroText: 全自動股票管理表 | 懶魚
 heroFullScreen: true
 tagline: 只需做好交易紀錄，其餘的都幫你搞定～✨

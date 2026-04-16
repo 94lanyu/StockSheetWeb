@@ -6,7 +6,7 @@ export default defineUserConfig({
     bundler: viteBundler(),
     base: "/",
     lang: "zh-TW",
-    title: "全自動股票管理表",
+    title: "懶魚",
     description: "自動化股票管理excel(Google試算表)，免下載，複製立即可用。免費試用、簡單股票記帳、股票管理表、自動更新股價、股票儀表版",
 
     head: [
@@ -27,7 +27,7 @@ export default defineUserConfig({
               "name": "全自動股票管理表",
               "url": "https://94lanyu.github.io/",
               "description": "基於 Google Sheets 的台股管理工具，開啟即自動更新股票成交價、計算損益、產生視覺化圖表，提供免費試用，另有美股、歐股、港股額外版本。",
-              "image": "https://94lanyu.github.io/images/台股訂閱版/儀表板.gif",
+              "image": "https://94lanyu.github.io/images/台股訂閱版/儀表板.webp",
               "applicationCategory": "FinanceApplication",
               "operatingSystem": "Web",
               "offers": {
@@ -55,6 +55,48 @@ export default defineUserConfig({
                 "另提供美股、歐股、港股額外版本"
               ]
             }`],
+        // Structured Data - HowTo (T-01)
+        ['script', {type: 'application/ld+json'}, JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "如何開始使用全自動股票管理表",
+            "description": "只需 3 個步驟，即可用 Google 試算表自動管理你的台股投資組合，免下載、免安裝",
+            "totalTime": "PT10M",
+            "step": [
+                {
+                    "@type": "HowToStep",
+                    "position": 1,
+                    "name": "填寫免費試用表單",
+                    "text": "點擊「免費試用」按鈕，填寫表單取得試用版連結",
+                    "url": "https://94lanyu.github.io/#step-1"
+                },
+                {
+                    "@type": "HowToStep",
+                    "position": 2,
+                    "name": "複製管理表到自己的 Google 雲端硬碟",
+                    "text": "開啟試用連結後，點選「建立副本」複製一份到自己的帳號",
+                    "url": "https://94lanyu.github.io/#step-2"
+                },
+                {
+                    "@type": "HowToStep",
+                    "position": 3,
+                    "name": "啟用並授權",
+                    "text": "開啟試算表後，依照指示啟用應用程式腳本並授權，系統即可自動更新股價、計算損益、產生圖表",
+                    "url": "https://94lanyu.github.io/#step-3"
+                }
+            ]
+        })],
+        // Open Graph — 僅補充 SEO plugin 未自動生成的項目 (T-02)
+        // og:type / og:site_name / og:title / og:description / og:url / og:locale
+        // 已由 theme.ts 的 SEO plugin 逐頁生成，不在此重複
+        ['meta', {property: 'og:image', content: 'https://94lanyu.github.io/images/台股訂閱版/儀表板.webp'}],
+        ['meta', {property: 'og:image:width', content: '1200'}],
+        ['meta', {property: 'og:image:height', content: '630'}],
+        // Twitter Card (T-02)
+        ['meta', {name: 'twitter:card', content: 'summary_large_image'}],
+        ['meta', {name: 'twitter:title', content: '全自動股票管理表 — 台股自動更新股價、損益計算'}],
+        ['meta', {name: 'twitter:description', content: '只需填入交易紀錄，自動更新台股成交價、計算損益。免費試用。'}],
+        ['meta', {name: 'twitter:image', content: 'https://94lanyu.github.io/images/台股訂閱版/儀表板.webp'}],
         // Structured Data - FAQPage
         ['script', {type: 'application/ld+json'}, `{
               "@context": "https://schema.org",
@@ -113,6 +155,50 @@ export default defineUserConfig({
     ],
 
     theme,
+
+    extendsPage: (page) => {
+        // T-09：依路徑設定 sitemap priority / changefreq
+        const rel = page.filePathRelative;
+        if (rel) {
+            if (rel === 'README.md') {
+                page.frontmatter.sitemap = { priority: 1.0, changefreq: 'weekly' };
+            } else if (rel.startsWith('guide/version/')) {
+                page.frontmatter.sitemap = { priority: 0.9, changefreq: 'weekly' };
+            } else if (rel.startsWith('guide/feature/')) {
+                page.frontmatter.sitemap = { priority: 0.8, changefreq: 'monthly' };
+            } else if (rel.startsWith('guide/')) {
+                page.frontmatter.sitemap = { priority: 0.7, changefreq: 'monthly' };
+            } else if (rel.startsWith('fqa/')) {
+                page.frontmatter.sitemap = { priority: 0.5, changefreq: 'yearly' };
+            } else if (rel === 'LanYu.md') {
+                page.frontmatter.sitemap = { priority: 0.4, changefreq: 'monthly' };
+            }
+        }
+
+        // T-04：為所有 FAQ 頁面自動注入 QAPage Schema
+        // 使用 page.title（從 H1 取得），而非 page.frontmatter.title（FAQ 頁沒有設此欄位）
+        if (!page.filePathRelative?.startsWith('fqa/')) return;
+        const title = page.title;
+        const description = page.frontmatter.description as string | undefined;
+        if (!title || !description) return;
+
+        const existingHead = (page.frontmatter.head as unknown[] | undefined) || [];
+        page.frontmatter.head = [
+            ...existingHead,
+            ['script', {type: 'application/ld+json'}, JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "QAPage",
+                "mainEntity": {
+                    "@type": "Question",
+                    "name": title,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": description
+                    }
+                }
+            })],
+        ];
+    },
 
     // Enable it with pwa
     // shouldPrefetch: false,
