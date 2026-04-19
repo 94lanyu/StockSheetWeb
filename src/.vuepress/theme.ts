@@ -16,8 +16,19 @@ export default hopeTheme({
 
     docsDir: "src",
 
+    // 關掉 hope 預設的 copyright 列（下方自訂 footer 已有版權資訊，避免重複）
+    copyright: "",
+
     // navbar
     navbar,
+
+    // nav 配置：logo + links 靠左、右側放 FreeTrial / Outlook / Search
+    // 對齊 mascot 設計（logo 旁邊緊跟著 links，最右側才是按鈕群）
+    navbarLayout: {
+        start: ["Brand", "Links"],
+        center: [],
+        end: ["Language", "Repo", "FreeTrial", "Outlook", "Search"],
+    },
 
     // sidebar
     sidebar,

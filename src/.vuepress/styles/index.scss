@@ -7,10 +7,12 @@
     // --- Mascot 色票 --------------------------------------------------------
     --mint:       #7FCEC0;
     --mint-600:   #4FB3A3;
+    --mint-ink:   #1A4A42;
     --mint-100:   #D7EFEA;
     --mint-50:    #EDF7F5;
 
     --coral:      #FF9B8A;
+    --coral-600:  #CE6F5F;
     --coral-100:  #FFE2DC;
 
     --red:        #E5503F;
@@ -20,9 +22,12 @@
     --green-100:  #DCEFE5;
 
     --yellow:     #FFE066;
+    --yellow-600: #C9B100;
     --yellow-100: #FFF1C2;
+    --yellow-ink: #806300;
 
     --blue-100:   #CCE0F4;
+    --blue-ink:   #1B4B7A;
     --indigo-100: #E0E7FF;
 
     --ink:        #2A2420;
@@ -32,8 +37,12 @@
     --fg-3:       #8A7F77;
 
     --hairline:   #E6DDD4;
+    --hairline-soft: #F4EEE5;
     --paper:      #FFF8F0;
     --card:       #FFFFFF;
+
+    --mascot-shadow-card: 0 4px 0 var(--hairline);
+    --mascot-shadow-card-hl: 0 4px 0 var(--yellow-600);
 
     // --- Type --------------------------------------------------------------
     --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont,
@@ -42,17 +51,27 @@
     --font-family: var(--font-sans) !important;
 }
 
-// 讓整站預設字體用 Noto Sans TC
+// 讓整站預設字體用 Noto Sans TC + 溫潤紙色背景
 html,
 body {
     font-family: var(--font-sans);
+    background: var(--paper);
+    color: var(--ink-soft);
+}
+
+// 全站主 accent 強制 mint（防 hope 舊綠外洩到 :root）
+:root,
+#app {
+    --vp-c-accent-hover:  var(--yellow);
+    --vp-c-accent-bg:     var(--yellow);
+    --vp-c-bg-alt:        var(--hairline-soft);
+    --vp-c-text-mute:     var(--mint);
 }
 
 // ==========================================================================
-// 下列 class 僅供 MascotHome.vue 等自訂 layout 使用，不影響 docs 頁面
+// 首頁 MascotHome 元件樣式 (blob / button / heading)
 // ==========================================================================
 
-// BLOBS ---------------------------------------------------------------------
 .mascot-blob {
     position: absolute;
     border-radius: 50%;
@@ -67,7 +86,6 @@ body {
     &.blue   { background: var(--blue-100); }
 }
 
-// PILL BUTTON ---------------------------------------------------------------
 .pillbtn {
     background: var(--red);
     color: #fff;
@@ -93,9 +111,8 @@ body {
 
     &.mint {
         background: var(--mint);
-        color: #1A4A42;
+        color: var(--mint-ink);
         box-shadow: 0 4px 0 var(--mint-600), 0 8px 20px -8px rgba(127, 206, 192, .6);
-
         &:active {
             box-shadow: 0 2px 0 var(--mint-600), 0 4px 10px -4px rgba(127, 206, 192, .6);
         }
@@ -105,7 +122,6 @@ body {
         background: #fff;
         color: var(--ink-soft);
         box-shadow: 0 4px 0 var(--hairline), 0 8px 20px -8px rgba(0, 0, 0, .1);
-
         &:active {
             box-shadow: 0 2px 0 var(--hairline), 0 4px 10px -4px rgba(0, 0, 0, .1);
         }
@@ -115,7 +131,6 @@ body {
     &.lg { padding: 14px 24px; font-size: 16px; }
 }
 
-// HEADING -------------------------------------------------------------------
 .mascot-h1 {
     font-size: clamp(44px, 6vw, 72px);
     line-height: 1.05;
@@ -172,50 +187,71 @@ body {
     margin-bottom: 18px;
 
     &.mint   { background: var(--mint-100);   color: #2E6B63; }
-    &.yellow { background: var(--yellow-100); color: #806300; }
+    &.yellow { background: var(--yellow-100); color: var(--yellow-ink); }
     &.pink   { background: var(--coral-100);  color: #8F3A2F; }
 }
 
-// UTIL ----------------------------------------------------------------------
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .gain { color: var(--green); }
 .loss { color: var(--red); }
 
 // ==========================================================================
-// Hope theme 內頁 navbar / footer 覆寫 — mascot 風格
-// 只改外觀，不動結構，避免破壞 hope theme 的行為
+// Navbar — mascot 風格
+// 對齊 mascot.css 的 nav.n：max-width 1200、無底線、透明底、按鈕在最右
 // ==========================================================================
 
-// Navbar --------------------------------------------------------------------
 .vp-navbar {
-    background: rgba(255, 248, 240, 0.92) !important; // paper 透光
+    // 把 1200 置中：左右 padding 用 viewport 差值
+    padding:
+        14px max(28px, calc((100vw - 1200px) / 2)) !important;
+    background: rgba(255, 248, 240, 0.92) !important;
     backdrop-filter: saturate(140%) blur(12px);
-    box-shadow: 0 1px 0 var(--hairline), 0 2px 12px rgba(60, 52, 48, 0.04) !important;
-    border-bottom: 0;
+    // 移除 hope 預設的底部陰影 / 邊線（對齊 mascot.css，讓 nav 與內容顏色融合）
+    box-shadow: none !important;
+    border-bottom: 0 !important;
 }
 
+// 站名
 .vp-site-name {
     color: var(--ink-soft) !important;
     font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0;
 }
 
-// 導覽列 logo 加圓角與陰影，呼應首頁的圓角 logo
+// Logo 圓角 + 淡陰影（對齊 mascot）
 .vp-nav-logo {
     border-radius: 10px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 
-// 連結顏色
+// 讓 Brand 與 Links 並排、緊跟著
+.vp-navbar-start {
+    flex: 0 1 auto !important;
+    gap: 10px;
+}
+
+.vp-navbar-center { flex: 1 1 auto !important; }
+
+.vp-navbar-end {
+    flex: 0 0 auto !important;
+    gap: 4px;
+}
+
+// Links
 .vp-navbar .vp-nav-item > .auto-link {
     color: var(--fg-2) !important;
     font-weight: 500;
+    font-size: 14px;
+    padding: 6px 10px !important;
     transition: color .15s ease-out;
 
-    &:hover {
-        color: var(--ink-soft) !important;
-    }
+    &:hover { color: var(--ink-soft) !important; }
 
-    // 蓋掉 hope 的 ::before 薄荷底線，換成黃色寬底線
+    // 黃色寬底線當 active 指示
     &::before {
         background: var(--yellow) !important;
         height: 3px !important;
@@ -228,20 +264,11 @@ body {
     }
 }
 
-// 下拉選單的標題
-.vp-navbar .vp-nav-item .vp-nav-dropdown-title,
-.vp-navbar .vp-nav-item > span {
-    color: var(--fg-2) !important;
-
-    &:hover {
-        color: var(--ink-soft) !important;
-    }
-}
-
-// 下拉觸發按鈕 .vp-dropdown-title（hope 用 button 元件）— 配色 + 黃色底線
-.vp-navbar .vp-nav-item > .vp-dropdown-wrapper > .vp-dropdown-title {
+// 下拉觸發按鈕
+.vp-navbar .vp-nav-item .vp-dropdown-title {
     color: var(--fg-2) !important;
     font-weight: 500;
+    font-size: 14px;
     position: relative;
     background: transparent !important;
     border: 0 !important;
@@ -251,10 +278,7 @@ body {
     &:hover {
         color: var(--ink-soft) !important;
 
-        &::after {
-            opacity: 1;
-            transform: scaleX(1);
-        }
+        &::after { opacity: 1; transform: scaleX(1); }
     }
 
     &::after {
@@ -274,7 +298,7 @@ body {
     }
 }
 
-// 下拉選單中含有 active 子頁時，觸發按鈕也 active
+// 下拉選單中含 active 子頁
 .vp-navbar .vp-nav-item > .vp-dropdown-wrapper:has(.route-link-active) > .vp-dropdown-title {
     color: var(--ink) !important;
     font-weight: 600;
@@ -282,12 +306,15 @@ body {
     &::after { opacity: 1; transform: scaleX(1); }
 }
 
-// 下拉 popover — 修 hope 預設白底白字看不見
+// ==========================================================================
+// Dropdown popover — 完全 mascot 配色（避免舊綠色外洩）
+// ==========================================================================
+
 .vp-dropdown {
-    background: #fff !important;
+    background: var(--card) !important;
     border: 1px solid var(--hairline) !important;
-    box-shadow: 0 8px 24px rgba(60, 52, 48, 0.08) !important;
-    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(60, 52, 48, 0.12) !important;
+    border-radius: 14px !important;
     padding: 8px !important;
 
     .vp-dropdown-item {
@@ -297,16 +324,18 @@ body {
             font-weight: 500;
             padding: 8px 12px !important;
             border-radius: 8px;
+            background: transparent !important;
 
             &:hover {
-                color: var(--ink) !important;
-                background: var(--mint-50);
+                color: var(--ink-soft) !important;
+                background: var(--yellow-100) !important;
             }
 
             &.route-link-active {
                 color: var(--ink) !important;
-                background: var(--mint-100);
+                background: var(--yellow) !important;
                 font-weight: 600;
+                box-shadow: 0 2px 0 var(--yellow-600);
             }
 
             &::before { display: none !important; }
@@ -329,15 +358,16 @@ body {
         font-size: 13px;
         padding: 6px 12px 6px 20px !important;
         border-radius: 6px;
+        background: transparent !important;
 
         &:hover {
-            color: var(--ink) !important;
-            background: var(--mint-50);
+            color: var(--ink-soft) !important;
+            background: var(--yellow-100) !important;
         }
 
         &.route-link-active {
             color: var(--ink) !important;
-            background: var(--mint-100);
+            background: var(--yellow) !important;
             font-weight: 600;
         }
 
@@ -345,33 +375,61 @@ body {
     }
 }
 
-// Footer --------------------------------------------------------------------
+// ==========================================================================
+// Back-to-Top 按鈕 & Scroll Progress 圈 — 改成 mascot mint
+// （使用者說右下角滑道最頂仍是舊綠色）
+// ==========================================================================
+
+.vp-back-to-top-button {
+    --back-to-top-c-bg: var(--card) !important;
+    --back-to-top-c-accent-bg: var(--mint) !important;
+    --back-to-top-c-accent-hover: var(--mint-600) !important;
+    --back-to-top-c-shadow: rgba(127, 206, 192, 0.25) !important;
+
+    background: var(--card) !important;
+    color: var(--mint) !important;
+    border: 1px solid var(--hairline) !important;
+
+    svg { color: inherit !important; }
+    svg path, svg polyline, svg line { stroke: currentColor !important; }
+
+    &:hover {
+        color: var(--mint-600) !important;
+        background: var(--mint-50) !important;
+    }
+}
+
+.vp-scroll-progress circle {
+    stroke: var(--mint) !important;
+}
+
+// ==========================================================================
+// Footer — mascot 風格 (隱藏 hope 預設 copyright，避免和 mf-legal 重複)
+// ==========================================================================
+
 .vp-footer-wrapper {
     background: var(--ink) !important;
     color: #B8B0A8 !important;
     border-top: 0 !important;
     padding: 48px 28px 24px !important;
+    margin-top: 40px;
+    display: block !important;       // 復原 hope 的 flex 對齊 (單欄 footer)
+    text-align: left !important;
+
+    // hope 自動產生的 copyright 跟我們自訂 footer 內的 mf-legal 重複，隱藏它
+    > .vp-copyright { display: none !important; }
 
     .vp-footer {
         color: #B8B0A8 !important;
         max-width: none;
+        margin: 0;
         padding: 0;
-    }
-
-    .vp-copyright {
-        color: #8A7F77 !important;
-        max-width: 1200px;
-        margin: 24px auto 0;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 12px;
-        text-align: center;
+        font-size: 14px;
     }
 
     a {
         color: #FFE066 !important;
         text-decoration: none;
-
         &:hover { color: #fff !important; }
     }
 
@@ -396,7 +454,6 @@ body {
             font-size: 13px;
             padding: 4px 0;
             color: #B8B0A8 !important;
-            text-decoration: none;
 
             &:hover { color: #fff !important; }
         }
@@ -426,6 +483,7 @@ body {
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         display: flex;
         justify-content: space-between;
+        gap: 16px;
         font-size: 12px;
         color: #8A7F77;
 
@@ -438,37 +496,331 @@ body {
 
     @media (max-width: 760px) {
         padding: 36px 20px 20px !important;
-
-        .mf-wrap   { grid-template-columns: 1fr; gap: 28px; }
-        .mf-legal  { flex-direction: column; gap: 8px; text-align: center; justify-content: center; }
+        .mf-wrap  { grid-template-columns: 1fr; gap: 28px; }
+        .mf-legal { flex-direction: column; gap: 8px; text-align: center; justify-content: center; }
     }
 }
 
-// ==========================================================================
-// 內頁細節微調：連結色、h1 字體、code block 圓角
-// ==========================================================================
-
-.theme-hope-content a:not(.header-anchor):not(.auto-link) {
-    text-decoration-color: var(--mint);
+// hope 在非首頁會用 margin-top: -2rem 把 footer 拉近，mascot 不要這個貼齊
+.vp-page:not(.not-found) + .vp-footer-wrapper {
+    margin-top: 40px !important;
 }
 
-// code block 圓角與背景
+// ==========================================================================
+// 文件頁（guide / fqa / LanYu 等）— 側邊欄 / TOC / markdown 呈現
+// 參考 claude-design/redesign/mascot/guide-dashboard.html
+// ==========================================================================
+
+// ---- 左側 Sidebar --------------------------------------------------------
+.vp-sidebar {
+    background: var(--paper) !important;
+    border-right: 1px solid var(--hairline) !important;
+    box-shadow: none !important;
+    font-family: var(--font-sans);
+
+    // group 標題
+    .vp-sidebar-group-heading,
+    > .vp-sidebar-items > .vp-sidebar-item > a:first-child,
+    > .vp-sidebar-items > li > p,
+    .vp-sidebar-header {
+        font-family: var(--font-sans);
+        font-size: 14px !important;
+        color: var(--fg-2) !important;
+        font-weight: 600 !important;
+        padding: 18px 16px 6px !important;
+    }
+
+    // 連結項
+    a {
+        color: var(--fg-2) !important;
+        font-size: 14px;
+        padding: 7px 14px !important;
+        border-radius: 10px;
+        margin: 1px 8px;
+        font-weight: 500;
+        transition: background .15s ease;
+
+        &:hover {
+            background: var(--card) !important;
+            color: var(--ink-soft) !important;
+        }
+
+        // active 以黃色強調（對齊 guide-dashboard sb a.act）
+        &.route-link-active,
+        &.active {
+            background: var(--yellow) !important;
+            color: var(--ink) !important;
+            font-weight: 600;
+            box-shadow: 0 2px 0 var(--yellow-600);
+
+            &::before { display: none !important; }
+        }
+    }
+
+    // scrollbar 收起
+    scrollbar-width: thin;
+    scrollbar-color: var(--hairline) transparent;
+}
+
+// ---- 右側 TOC ------------------------------------------------------------
+#toc,
+.vp-toc-placeholder {
+    .vp-toc-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding-inline-start: 16px;
+        margin-bottom: 10px;
+    }
+
+    .vp-toc-link {
+        font-size: 13px;
+        padding: 4px 16px;
+        color: var(--fg-2);
+        border-left: 2px solid transparent;
+        line-height: 1.6;
+        transition: color .15s ease, border-color .15s ease;
+
+        &:hover { color: var(--ink) !important; }
+    }
+
+    .vp-toc-item.active > .vp-toc-link {
+        color: var(--ink) !important;
+        font-weight: 600;
+        border-left-color: var(--mint) !important;
+    }
+
+    // hope 的直線 / marker 用 mint
+    .vp-toc-wrapper > .vp-toc-list::before {
+        background: var(--hairline-soft) !important;
+    }
+
+    .vp-toc-marker {
+        background: var(--mint) !important;
+    }
+}
+
+// ---- 正文 markdown ------------------------------------------------------
+// Hope 的 markdown 並未包在 .theme-hope-content，需以 .vp-page 為範圍
+// 並排除 mascot-page（首頁）以免影響自訂 hero
+.vp-page:not(:has(.mascot-page)) {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+
+    p {
+        font-size: 15px;
+        line-height: 1.85;
+        color: var(--ink-soft);
+        margin: 14px 0;
+    }
+
+    h1 {
+        font-size: clamp(32px, 4vw, 48px) !important;
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        border-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    h2 {
+        font-size: 26px !important;
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.015em;
+        scroll-margin-top: calc(var(--navbar-height) + 20px);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 0 !important;
+        padding-bottom: 0 !important;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--yellow);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    }
+
+    h3 {
+        font-size: 18px !important;
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+        border-bottom: 0 !important;
+    }
+
+    h4 {
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+    }
+
+    ul, ol {
+        font-size: 15px;
+        line-height: 1.9;
+        color: var(--ink-soft);
+
+        li { margin: 6px 0; }
+        li::marker { color: var(--mint); }
+    }
+
+    a:not(.header-anchor):not(.auto-link):not(.vp-toc-link) {
+        color: var(--mint-ink);
+        text-decoration-color: var(--mint);
+        text-underline-offset: 3px;
+
+        &:hover {
+            color: var(--coral-600);
+            text-decoration-color: var(--coral);
+        }
+    }
+
+    figure {
+        background: var(--card);
+        border-radius: 20px;
+        padding: 14px;
+        margin: 22px 0;
+        width: max-content;
+        max-width: 100%;
+
+        img { border-radius: 12px; max-width: 100%; display: block; }
+
+        figcaption {
+            font-size: 12px;
+            color: var(--fg-3);
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+    table {
+        width: max-content;
+        max-width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 18px 0;
+        font-size: 14px;
+        background: var(--card);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--mascot-shadow-card);
+        border: 0 !important;
+
+        th, td {
+            padding: 12px 16px !important;
+            text-align: left;
+            vertical-align: top;
+            border: 0 !important;
+        }
+
+        thead th {
+            background: var(--yellow) !important;
+            color: var(--ink) !important;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: .02em;
+        }
+
+        tbody tr { border-top: 1px solid var(--hairline-soft); }
+        tbody tr:nth-child(2n) { background: transparent !important; }
+        tbody td:first-child { font-weight: 600; color: var(--ink); }
+    }
+
+    // hope custom container (tip / info / warning / danger) → mascot callout
+    .hint-container,
+    .custom-container {
+        border: 0 !important;
+        border-radius: 18px;
+        margin: 22px 0;
+        padding: 16px 22px;
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--ink-soft);
+        background: var(--mint-100);
+        position: relative;
+
+        .hint-container-title,
+        .custom-container-title {
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        p { margin: 6px 0; font-size: 14px; }
+
+        &.tip { background: var(--yellow-100); color: var(--ink-soft); }
+        &.tip .hint-container-title,
+        &.tip .custom-container-title { color: var(--yellow-ink); }
+
+        &.info { background: var(--mint-100); }
+        &.info .hint-container-title,
+        &.info .custom-container-title { color: var(--mint-ink); }
+
+        &.warning { background: var(--coral-100); }
+        &.warning .hint-container-title,
+        &.warning .custom-container-title { color: #8F3A2F; }
+
+        &.danger,
+        &.caution { background: var(--coral-100); color: #8F3A2F; }
+        &.danger .hint-container-title,
+        &.danger .custom-container-title,
+        &.caution .hint-container-title,
+        &.caution .custom-container-title { color: #8F3A2F; }
+
+        &.note,
+        &.details { background: var(--detail-c-bg); }
+    }
+
+    :not(pre) > code {
+        background: var(--hairline-soft);
+        color: var(--coral-600);
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-family: var(--font-mono);
+        font-size: .9em;
+    }
+
+    blockquote {
+        background: var(--card);
+        border-left: 4px solid var(--mint) !important;
+        border-radius: 0 14px 14px 0;
+        color: var(--fg-2);
+        padding: 12px 16px;
+        margin: 18px 0;
+        box-shadow: var(--mascot-shadow-card);
+    }
+
+    hr {
+        border: 0;
+        border-top: 2px dashed var(--hairline);
+        margin: 32px 0;
+    }
+}
+
+// code block 圓角（保留 shiki 原本的配色與排版，不蓋掉它）
 div[class*="language-"] {
-    border-radius: 12px;
+    border-radius: 14px;
+    margin: 16px 0;
+    overflow: hidden;
+
 }
 
 // ==========================================================================
 // 首頁 MascotHome 在 hope 預設 Layout 裡 full-bleed
-// 用 :has() 偵測有 .mascot-page 的頁面，關掉 hope 內容容器的 max-width / padding
-// 並隱藏 PageTitle / BreadCrumb / TOC / PageMeta / PageNav
 // ==========================================================================
-
 .vp-page:has(.mascot-page) {
     max-width: none !important;
     padding: 0 !important;
     margin: 0 !important;
 
-    // hope 為非首頁插入的所有 decorations 全隱藏
     > .page-title,
     > .vp-breadcrumb,
     > .vp-toc-placeholder,
@@ -479,7 +831,6 @@ div[class*="language-"] {
         display: none !important;
     }
 
-    // MarkdownContent 本身的 padding 也拿掉
     > .theme-hope-content {
         max-width: none !important;
         margin: 0 !important;
@@ -487,32 +838,22 @@ div[class*="language-"] {
     }
 }
 
-// 讓 theme-container 也清掉側邊留白（home 不需要 sidebar 槽位）
 .theme-container.no-sidebar:has(.mascot-page) {
     padding: 0 !important;
-
-    main#main-content {
-        padding: 0 !important;
-    }
+    main#main-content { padding: 0 !important; }
 }
 
-// 有些 hope 版本 sidebar 槽位由 .theme-container 下 padding-left 預留，再補一刀
 .theme-container:has(.mascot-page) main#main-content {
     padding-inline: 0 !important;
     max-width: none !important;
 }
 
-// ==========================================================================
-// 首頁 — 用 :has(.mascot-page) 精準命中（frontmatter pageClass 在 hope 沒進 DOM）
-// 釋放 hope 的 content container / toc 預留空間，讓 MascotHome 鋪滿
-// ==========================================================================
 .theme-container:has(.mascot-page) {
     .vp-page {
         padding: 0 !important;
         max-width: none !important;
     }
 
-    // hope 在 main.vp-page 下有個無 class 的 wrapper div（max-width: 780px），要一起釋放
     .vp-page > div {
         max-width: none !important;
         padding: 0 !important;
@@ -520,12 +861,8 @@ div[class*="language-"] {
         width: 100% !important;
     }
 
-    // hope 預設 main 上緣有 padding-top，首頁不要
-    main.vp-page {
-        padding-top: 0 !important;
-    }
+    main.vp-page { padding-top: 0 !important; }
 
-    // 隱藏 hope 自動渲染的頁面元件（首頁用 MascotHome 自己的版型）
     .vp-page-title,
     .vp-breadcrumb,
     .vp-page-meta,
@@ -535,4 +872,10 @@ div[class*="language-"] {
     .vp-comment {
         display: none !important;
     }
+}
+
+// 修正 footnote-item 的大空白：改用 scroll-margin-top 處理 anchor 跳轉偏移
+.footnote-item {
+    padding-top: 0.5rem !important;
+    scroll-margin-top: var(--header-offset, 3.6rem);
 }

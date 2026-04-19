@@ -171,15 +171,14 @@
   z-index: 1;
 }
 
-.b1 { top: -80px;  left: -60px;  width: 360px; height: 360px; }
+.b1 { top: 80px;  left: -60px;  width: 360px; height: 360px; }
 .b2 { top: 240px;  right: -80px; width: 420px; height: 420px; }
 .b3 { top: 900px;  left: 30%;    width: 500px; height: 500px; }
 
 // HERO -----------------------------------------------------------
 .hero {
   position: relative;
-  padding: 40px 0 60px;
-  overflow: hidden;
+  padding: 100px 0 60px;
 }
 
 .hero-grid {
