@@ -1,10 +1,10 @@
 import { defineClientConfig } from '@vuepress/client';
 import { onMounted } from 'vue';
-import MascotHome from './layouts/MascotHome.vue';
+import MascotHome from './components/MascotHome.vue';
 
 export default defineClientConfig({
-    layouts: {
-        MascotHome,
+    enhance({ app }) {
+        app.component('MascotHome', MascotHome);
     },
     setup() {
         onMounted(() => {

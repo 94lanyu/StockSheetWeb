@@ -4,22 +4,6 @@
     <div class="mascot-blob mint b2"></div>
     <div class="mascot-blob yellow b3"></div>
 
-    <nav class="mn">
-      <a href="/" class="logo">
-        <img src="/mascot/logo.webp" alt="懶魚" />
-        <span>懶魚</span>
-      </a>
-      <a href="#features" class="active">功能</a>
-      <a href="/guide/">指南</a>
-      <a href="/guide/version/">版本</a>
-      <a href="/fqa/">常見問題</a>
-      <div class="spacer"></div>
-      <a href="/LanYu.html">懶魚の日記</a>
-      <a href="https://forms.gle/RsfJdnReB1pzahQM6" target="_blank" rel="noopener" class="pillbtn mint sm">
-        🧭 免費試用
-      </a>
-    </nav>
-
     <section class="hero shell">
       <div class="hero-grid">
         <div>
@@ -161,43 +145,11 @@
         </div>
       </div>
     </section>
-
-    <footer class="mf">
-      <div class="fwrap">
-        <div>
-          <div class="brand">
-            <img src="/mascot/logo.webp" alt="懶魚" />
-            <b>懶魚 LanYu</b>
-          </div>
-          <div class="tag">只需做好交易紀錄，<br />其餘的都幫你搞定 ～ ✨</div>
-        </div>
-        <div>
-          <h4>產品</h4>
-          <a href="/guide/version/台股訂閱版.html">台股訂閱版</a>
-          <a href="/guide/version/美股收費版.html">美股收費版</a>
-          <a href="/guide/version/客製化.html">客製化版本</a>
-        </div>
-        <div>
-          <h4>資源</h4>
-          <a href="/guide/">使用指南</a>
-          <a href="/fqa/">常見問題</a>
-          <a href="/LanYu.html">懶魚の日記</a>
-        </div>
-        <div>
-          <h4>聯絡</h4>
-          <a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a>
-          <a href="https://www.facebook.com/kevin.lazy.fish" target="_blank" rel="noopener">Facebook</a>
-        </div>
-      </div>
-      <div class="legal">
-        <span>© 2026 懶魚 LanYu · 全自動股票管理表</span>
-        <span>作者：懶魚</span>
-      </div>
-    </footer>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <style lang="scss" scoped>
 .mascot-page {
@@ -207,6 +159,8 @@
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  width: 100%;
+  margin: 0;
 }
 
 .shell {
@@ -220,65 +174,6 @@
 .b1 { top: -80px;  left: -60px;  width: 360px; height: 360px; }
 .b2 { top: 240px;  right: -80px; width: 420px; height: 420px; }
 .b3 { top: 900px;  left: 30%;    width: 500px; height: 500px; }
-
-// NAV ------------------------------------------------------------
-.mn {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  padding: 22px 28px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    color: #3C3430;
-    font-size: 18px;
-    cursor: pointer;
-    text-decoration: none;
-
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
-    }
-  }
-
-  a {
-    color: #6B5D56;
-    font-size: 14px;
-    cursor: pointer;
-    white-space: nowrap;
-    text-decoration: none;
-
-    &:hover { color: #3C3430; }
-
-    &.active {
-      color: #2A2420;
-      font-weight: 600;
-      position: relative;
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -4px;
-        height: 3px;
-        background: #FFE066;
-        border-radius: 2px;
-      }
-    }
-  }
-
-  .spacer { margin-left: auto; }
-}
 
 // HERO -----------------------------------------------------------
 .hero {
@@ -611,63 +506,6 @@
   }
 }
 
-// FOOTER --------------------------------------------------------
-.mf {
-  background: #2A2420;
-  color: #B8B0A8;
-  padding: 48px 28px 28px;
-  margin-top: 40px;
-
-  .fwrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.4fr repeat(3, 1fr);
-    gap: 40px;
-  }
-
-  h4 {
-    color: #fff;
-    font-size: 14px;
-    margin: 0 0 14px;
-    font-weight: 600;
-  }
-
-  a {
-    display: block;
-    font-size: 13px;
-    padding: 4px 0;
-    color: #B8B0A8;
-    cursor: pointer;
-    text-decoration: none;
-
-    &:hover { color: #fff; }
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-
-    img { width: 44px; height: 44px; border-radius: 12px; }
-    b   { color: #fff; font-size: 18px; }
-  }
-
-  .tag { font-size: 13px; line-height: 1.7; }
-
-  .legal {
-    max-width: 1200px;
-    margin: 32px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, .08);
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #8A7F77;
-  }
-}
-
 // RESPONSIVE ----------------------------------------------------
 @media (max-width: 960px) {
   .hero-grid   { grid-template-columns: 1fr; gap: 60px; }
@@ -675,14 +513,10 @@
   .fgrid       { grid-template-columns: repeat(2, 1fr); }
   .cta-card    { grid-template-columns: 1fr; padding: 40px 28px; }
   .cta-mascot  { justify-self: center; }
-  .mf .fwrap   { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 760px) {
-  .mn { flex-wrap: wrap; gap: 14px; .spacer { display: none; } }
   .fgrid { grid-template-columns: 1fr; }
-  .mf .fwrap { grid-template-columns: 1fr; }
-  .mf .legal { flex-direction: column; gap: 8px; }
   .mascot-bg, .mascot-img { width: 320px; height: 320px; }
   .sticker.s1 { left: -10px; top: 20px; }
   .sticker.s3 { right: -10px; }

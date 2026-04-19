@@ -22,7 +22,38 @@ export default hopeTheme({
     // sidebar
     sidebar,
 
-    footer: '<address><strong>全自動股票管理表 - 股票記帳、投資組合管理與自動更新</strong><br>作者：懶魚&nbsp;&nbsp;Email：<a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a></address>',
+    footer: `
+      <div class="mf-wrap">
+        <div class="mf-col mf-brand">
+          <div class="mf-logo">
+            <img src="/mascot/logo.webp" alt="懶魚" />
+            <b>懶魚 LanYu</b>
+          </div>
+          <div class="mf-tag">只需做好交易紀錄，<br />其餘的都幫你搞定 ～ ✨</div>
+        </div>
+        <div class="mf-col">
+          <h4>產品</h4>
+          <a href="/guide/version/台股訂閱版.html">台股訂閱版</a>
+          <a href="/guide/version/美股收費版.html">美股收費版</a>
+          <a href="/guide/version/客製化.html">客製化版本</a>
+        </div>
+        <div class="mf-col">
+          <h4>資源</h4>
+          <a href="/guide/">使用指南</a>
+          <a href="/fqa/">常見問題</a>
+          <a href="/LanYu.html">懶魚の日記</a>
+        </div>
+        <div class="mf-col">
+          <h4>聯絡</h4>
+          <a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a>
+          <a href="https://www.facebook.com/kevin.lazy.fish" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <address class="mf-legal">
+        <span>© 2026 懶魚 LanYu · 全自動股票管理表</span>
+        <span>作者：懶魚&nbsp;&nbsp;Email：<a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a></span>
+      </address>
+    `,
 
     displayFooter: true,
 
