@@ -65,7 +65,7 @@ body {
     --vp-c-accent-hover:  var(--yellow);
     --vp-c-accent-bg:     var(--yellow);
     --vp-c-bg-alt:        var(--hairline-soft);
-    --vp-c-text-mute:     var(--mint);
+    --vp-c-text-mute:     var(--fg-3);
 }
 
 // ==========================================================================
@@ -603,6 +603,11 @@ body {
     }
 }
 
+// Blog 列表頁背景統一為 paper（覆蓋 Hope 預設白色）
+.vp-page.vp-blog {
+    background: var(--paper) !important;
+}
+
 // ---- 正文 markdown ------------------------------------------------------
 // Hope 的 markdown 並未包在 .theme-hope-content，需以 .vp-page 為範圍
 // 並排除 mascot-page（首頁）以免影響自訂 hero
@@ -801,7 +806,7 @@ body {
     hr {
         border: 0;
         border-top: 2px dashed var(--hairline);
-        margin: 32px 0;
+        margin: 16px 0;
     }
 }
 
@@ -878,4 +883,444 @@ div[class*="language-"] {
 .footnote-item {
     padding-top: 0.5rem !important;
     scroll-margin-top: var(--header-offset, 3.6rem);
+}
+
+// ==========================================================================
+// 文件頁通用 meta 區塊 (breadcrumb / page-meta / page-nav)
+// ==========================================================================
+
+.vp-breadcrumb {
+    font-size: 13px;
+    font-family: var(--font-sans);
+
+    .vp-breadcrumb-item {
+        color: var(--fg-3);
+
+        &.active { color: var(--ink-soft); font-weight: 600; }
+    }
+
+    .vp-breadcrumb-separator { color: var(--hairline); }
+
+    a { color: var(--fg-2) !important; text-decoration: none; &:hover { color: var(--mint-ink) !important; } }
+}
+
+.vp-page-meta {
+    font-size: 13px;
+    color: var(--fg-3);
+    font-family: var(--font-sans);
+    border-top: 2px dashed var(--hairline) !important;
+    padding-top: 20px !important;
+    margin-top: 32px !important;
+
+    .vp-meta-label { color: var(--fg-3); font-weight: 600; }
+
+    a { color: var(--mint-ink) !important; &:hover { color: var(--coral-600) !important; } }
+}
+
+.vp-page-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 40px;
+    font-family: var(--font-sans);
+
+    .vp-page-nav-prev,
+    .vp-page-nav-next {
+        background: var(--card);
+        border-radius: 16px;
+        box-shadow: var(--mascot-shadow-card);
+        padding: 16px 20px;
+        text-decoration: none;
+        transition: box-shadow .15s;
+
+        &:hover { box-shadow: 0 4px 0 var(--yellow-600); }
+    }
+
+    .vp-page-nav-title { font-size: 15px; font-weight: 600; color: var(--ink); }
+    .vp-page-nav-hint  { font-size: 12px; color: var(--fg-3); margin-bottom: 4px; font-family: var(--font-mono); letter-spacing: .05em; }
+}
+
+// ==========================================================================
+// 部落格 / 常見問題 (BlogType) 列表頁 — mascot 風格
+// ==========================================================================
+
+.vp-blog-main {
+    background: var(--paper);
+    font-family: var(--font-sans);
+}
+
+// 統計數字（61文章、8分類…）
+.vp-blog-counts { gap: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--fg-3); }
+
+.vp-blog-count {
+    background: var(--card);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 12px;
+    box-shadow: var(--mascot-shadow-card);
+    text-decoration: none !important;
+    color: var(--fg-3) !important;
+
+    .count { color: var(--ink); font-weight: 700; }
+    &:hover { background: var(--yellow-100); }
+}
+
+// ------ 頂部文字型切換器（全部 / 星標 / 常見問題）-------------------
+.vp-article-type-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.vp-article-type {
+    background: var(--card);
+    border-radius: 999px;
+    box-shadow: var(--mascot-shadow-card);
+    overflow: hidden;
+    transition: box-shadow .15s;
+
+    a {
+        display: inline-flex;
+        padding: 7px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--fg-2) !important;
+        text-decoration: none !important;
+        &:hover { color: var(--ink) !important; }
+    }
+
+    &.active {
+        background: var(--yellow);
+        box-shadow: 0 4px 0 var(--yellow-600);
+        a { color: var(--ink) !important; }
+    }
+}
+
+// ------ 文章列表容器 ------------------------------------------------
+.vp-article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    align-items: start;
+
+    @media (max-width: 760px) { grid-template-columns: 1fr; }
+}
+
+// ------ 文章卡片（FAQ 知識庫風格重新排版）--------------------------
+.vp-article-item {
+    background: var(--card) !important;
+    border-radius: 18px !important;
+    box-shadow: var(--mascot-shadow-card) !important;
+    border: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .15s, transform .15s;
+
+    &:hover {
+        box-shadow: 0 4px 0 var(--yellow-600) !important;
+        transform: translateY(-2px);
+    }
+}
+
+// 封面圖（如有）
+.vp-article-cover {
+    margin: 0;
+    overflow: hidden;
+    img { width: 100%; display: block; max-height: 160px; object-fit: cover; }
+}
+
+// 標題連結 — 包住整個 header，讓點擊範圍完整
+.vp-article-item > a.route-link {
+    text-decoration: none !important;
+    display: block;
+}
+
+.vp-article-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--ink) !important;
+    line-height: 1.5;
+    margin: 0 !important;
+    padding: 20px 20px 0;
+
+    // 連結顏色跟隨卡片 hover
+    .vp-article-item:hover & { color: var(--ink) !important; }
+
+    span { display: block; }
+}
+
+// Excerpt — 只顯示第一段純文字，隱藏 code / 圖片
+.vp-article-excerpt {
+    flex: 1;
+    padding: 8px 20px 0;
+    font-size: 13px;
+    color: var(--fg-2) !important;
+    line-height: 1.7;
+    margin: 0 !important;
+
+    // 隱藏所有非段落內容（code block、圖片、列表…）
+    > *:not(p) { display: none !important; }
+
+    p {
+        margin: 0 !important;
+        font-size: 13px !important;
+        color: var(--fg-2) !important;
+        line-height: 1.7;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        img { display: none !important; }  // 隱藏 <p><img> 結構的圖片
+    }
+}
+
+// HR 分隔線
+.vp-article-hr {
+    border: 0 !important;
+    border-top: 1px dashed var(--hairline-soft) !important;
+    margin: 12px 20px 0 !important;
+}
+
+// ------ page-info meta（作者 / 日期 / 分類 / 標籤）---------------
+.page-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 20px 18px;
+    font-size: 12px;
+    font-family: var(--font-sans);
+    color: var(--fg-3);
+
+    // 隱藏作者、日期（FAQ 不需要）
+    .page-author-info,
+    .page-date-info { display: none !important; }
+
+    // 閱讀時間 → mono 小字推到最右
+    .page-reading-time-info {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        margin-left: auto;
+        white-space: nowrap;
+
+        svg { display: none; }  // 隱藏 icon，只留數字
+    }
+
+    // 分類/標籤 icon svg 收起
+    .page-category-info > svg,
+    .page-tag-info > svg { display: none; }
+}
+
+// 分類 chip — 覆蓋 Hope color1-10 彩虹色系
+.page-category-item {
+    background: var(--mint-100) !important;
+    color: var(--mint-ink) !important;
+    border: 0 !important;
+    padding: 2px 9px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    font-family: var(--font-sans) !important;
+    cursor: pointer;
+    transition: background .15s;
+    display: inline-block;
+
+    &:hover { background: var(--mint) !important; color: #fff !important; }
+}
+
+// 標籤 chip — 灰色 mono pill
+.page-tag-item {
+    background: var(--hairline-soft) !important;
+    color: var(--fg-2) !important;
+    border: 0 !important;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-family: var(--font-mono) !important;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover { background: var(--yellow-100) !important; color: var(--yellow-ink) !important; }
+}
+
+// ------ 分頁 -------------------------------------------------------
+// 分頁導覽（在 vp-article-list grid 內需要 span 全欄）
+.vp-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+    font-family: var(--font-sans);
+    grid-column: 1 / -1;  // span 所有 grid 欄位
+}
+
+.vp-pagination-list { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+// 頁碼數字列（div.active, div 等）
+.vp-pagination-number {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    border: 0 !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+
+    > div {
+        min-width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        position: relative;
+        &::before { display: none !important; }
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--fg-2);
+        cursor: pointer;
+        background: var(--card);
+        box-shadow: var(--mascot-shadow-card);
+        transition: background .15s, box-shadow .15s;
+        user-select: none;
+
+        &:hover { background: var(--yellow-100); color: var(--ink); }
+
+        &.active {
+            background: var(--yellow) !important;
+            color: var(--ink) !important;
+            box-shadow: 0 4px 0 var(--yellow-600) !important;
+            cursor: default;
+        }
+
+        // 「下一頁/下一页」文字按鈕
+        &.next, &.prev {
+            background: transparent;
+            box-shadow: none;
+            color: var(--mint-ink);
+            font-family: var(--font-sans);
+            &:hover { background: var(--mint-50); }
+        }
+    }
+}
+
+// 「前往」input + button
+.vp-pagination-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--fg-3);
+
+    input {
+        width: 50px;
+        padding: 6px 10px;
+        border: 1px solid var(--hairline);
+        border-radius: 10px;
+        background: var(--card);
+        color: var(--ink-soft);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        text-align: center;
+        outline: none;
+        transition: border-color .15s;
+
+        &:focus { border-color: var(--mint); box-shadow: 0 0 0 3px var(--mint-50); }
+    }
+}
+
+.vp-pagination-button {
+    background: var(--card);
+    border: 0 !important;
+    border-radius: 10px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg-2);
+    cursor: pointer;
+    box-shadow: var(--mascot-shadow-card);
+    transition: box-shadow .15s, background .15s;
+
+    &:hover { background: var(--yellow-100); color: var(--ink); }
+}
+
+// ------ 標籤 / 分類 列表頁 ----------------------------------------
+.vp-tag-list,
+.vp-category-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.vp-tag-item,
+.vp-category-item {
+    background: var(--card);
+    border-radius: 999px;
+    box-shadow: var(--mascot-shadow-card);
+    overflow: hidden;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        color: var(--fg-2) !important;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none !important;
+        &:hover { color: var(--ink) !important; }
+    }
+
+    .vp-tag-count,
+    .vp-category-count {
+        padding: 1px 7px;
+    }
+}
+
+.vp-tag-item.active a     { background: var(--yellow); color: var(--ink) !important; }
+.vp-category-item.active a { background: var(--mint);  color: var(--mint-ink) !important; }
+
+// ---- 整合個人介紹卡（參考 diary.html about-card）----
+// .vp-blogger-info 包住 blogger + counts + social，作為整張卡
+.vp-blogger-info {
+    margin-top: 50px;
+}
+
+// Avatar 半懸浮在色條上
+.vp-blogger-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50% !important;
+    border: 4px solid var(--card) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+    margin-top: -50px;
+}
+
+.vp-blogger-name {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 20px 0 4px;
+}
+
+.vp-blogger-description {
+    font-size: 13px !important;
+    color: var(--fg-2) !important;
+}
+
+// ---- 統計數字 ---
+
+.vp-blog-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 8px;
+    background: var(--card);
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    color: var(--fg-3) !important;
+    transition: background .15s;
 }
