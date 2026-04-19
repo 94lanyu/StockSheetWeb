@@ -12,6 +12,10 @@ export default defineUserConfig({
     head: [
         // 網站圖標 favicon.ico
         ['link', {rel: 'icon', href: '/logo.ico'}],
+        // Mascot 風格字體 (Noto Sans TC + Roboto Mono)
+        ['link', {rel: 'preconnect', href: 'https://fonts.googleapis.com'}],
+        ['link', {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: ''}],
+        ['link', {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap'}],
         // Google Console search html 擁有全驗證
         ['meta', {name: 'google-site-verification', content: 'AdvLMReW9RFoWDOXEAm_koqL82b1ZwwKxlgrhaQtRnQ'}],
         // Google Tag Manager 埋 code

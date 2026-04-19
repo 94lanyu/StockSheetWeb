@@ -1,3 +1,8 @@
-// you can change colors here
-//$theme-color: #096dd9;
-$theme-color: #0295ff;
+// Mascot 風格色票 — 覆寫 vuepress-theme-hope 的主題色
+// 薄荷綠為主色，暖紅作為 accent
+
+$theme-color: #7FCEC0;
+
+// hope theme 的語意色（若後續發現某些 UI 不協調可再補）
+// $text-color: #3C3430;
+// $bg-color: #FFF8F0;

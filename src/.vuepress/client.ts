@@ -1,7 +1,11 @@
 import { defineClientConfig } from '@vuepress/client';
-import { onMounted, h } from 'vue';
+import { onMounted } from 'vue';
+import MascotHome from './layouts/MascotHome.vue';
 
 export default defineClientConfig({
+    layouts: {
+        MascotHome,
+    },
     setup() {
         onMounted(() => {
             const iframe = document.createElement('iframe');

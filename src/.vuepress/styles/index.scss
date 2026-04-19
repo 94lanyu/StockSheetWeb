@@ -1,6 +1,182 @@
-// place your custom styles here
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+// ==========================================================================
+// Mascot 風格全域樣式
+// 來源：claude-design/colors_and_type.css + redesign/mascot/mascot.css
+// ==========================================================================
 
 :root {
-    --font-family: 'Noto Sans TC', sans-serif !important;
+    // --- Mascot 色票 --------------------------------------------------------
+    --mint:       #7FCEC0;
+    --mint-600:   #4FB3A3;
+    --mint-100:   #D7EFEA;
+    --mint-50:    #EDF7F5;
+
+    --coral:      #FF9B8A;
+    --coral-100:  #FFE2DC;
+
+    --red:        #E5503F;
+    --red-600:    #B53B2E;
+
+    --green:      #2E9E6E;
+    --green-100:  #DCEFE5;
+
+    --yellow:     #FFE066;
+    --yellow-100: #FFF1C2;
+
+    --blue-100:   #CCE0F4;
+    --indigo-100: #E0E7FF;
+
+    --ink:        #2A2420;
+    --ink-soft:   #3C3430;
+    --fg-1:       #4A5458;
+    --fg-2:       #6B5D56;
+    --fg-3:       #8A7F77;
+
+    --hairline:   #E6DDD4;
+    --paper:      #FFF8F0;
+    --card:       #FFFFFF;
+
+    // --- Type --------------------------------------------------------------
+    --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont,
+                 'PingFang TC', 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+    --font-mono: 'Roboto Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --font-family: var(--font-sans) !important;
 }
+
+// 讓整站預設字體用 Noto Sans TC
+html,
+body {
+    font-family: var(--font-sans);
+}
+
+// ==========================================================================
+// 下列 class 僅供 MascotHome.vue 等自訂 layout 使用，不影響 docs 頁面
+// ==========================================================================
+
+// BLOBS ---------------------------------------------------------------------
+.mascot-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: .55;
+    z-index: 0;
+    pointer-events: none;
+
+    &.pink   { background: var(--coral-100); }
+    &.mint   { background: var(--mint-100); }
+    &.yellow { background: var(--yellow-100); }
+    &.blue   { background: var(--blue-100); }
+}
+
+// PILL BUTTON ---------------------------------------------------------------
+.pillbtn {
+    background: var(--red);
+    color: #fff;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--red-600), 0 8px 20px -8px rgba(229, 80, 63, .6);
+    transition: transform .1s;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 var(--red-600), 0 4px 10px -4px rgba(229, 80, 63, .6);
+    }
+
+    &.mint {
+        background: var(--mint);
+        color: #1A4A42;
+        box-shadow: 0 4px 0 var(--mint-600), 0 8px 20px -8px rgba(127, 206, 192, .6);
+
+        &:active {
+            box-shadow: 0 2px 0 var(--mint-600), 0 4px 10px -4px rgba(127, 206, 192, .6);
+        }
+    }
+
+    &.ghost {
+        background: #fff;
+        color: var(--ink-soft);
+        box-shadow: 0 4px 0 var(--hairline), 0 8px 20px -8px rgba(0, 0, 0, .1);
+
+        &:active {
+            box-shadow: 0 2px 0 var(--hairline), 0 4px 10px -4px rgba(0, 0, 0, .1);
+        }
+    }
+
+    &.sm { padding: 8px 14px; font-size: 13px; }
+    &.lg { padding: 14px 24px; font-size: 16px; }
+}
+
+// HEADING -------------------------------------------------------------------
+.mascot-h1 {
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1.05;
+    margin: 0;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    .hl {
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: -4px;
+            right: -4px;
+            bottom: 6px;
+            height: 16px;
+            background: var(--yellow);
+            z-index: -1;
+            border-radius: 4px;
+            transform: rotate(-1deg);
+        }
+    }
+}
+
+.section-h {
+    font-size: clamp(30px, 4vw, 38px);
+    color: var(--ink);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+}
+
+.section-sub {
+    text-align: center;
+    color: var(--fg-2);
+    margin-bottom: 48px;
+    font-size: 15px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--fg-2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    margin-bottom: 18px;
+
+    &.mint   { background: var(--mint-100);   color: #2E6B63; }
+    &.yellow { background: var(--yellow-100); color: #806300; }
+    &.pink   { background: var(--coral-100);  color: #8F3A2F; }
+}
+
+// UTIL ----------------------------------------------------------------------
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.gain { color: var(--green); }
+.loss { color: var(--red); }
