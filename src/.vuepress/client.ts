@@ -2,8 +2,13 @@ import { defineClientConfig } from '@vuepress/client';
 import { onMounted, onUnmounted } from 'vue';
 import MascotHome from './components/MascotHome.vue';
 import FreeTrialButton from './components/FreeTrialButton.vue';
+import Mascot404 from './components/Mascot404.vue';
 
 export default defineClientConfig({
+    layouts: {
+        NotFound: Mascot404,
+    },
+
     enhance({ app }) {
         app.component('MascotHome', MascotHome);
         // 注冊成全域元件，navbarLayout.end 才看得到
