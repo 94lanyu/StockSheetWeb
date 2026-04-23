@@ -51,7 +51,7 @@ export default hopeTheme({
         <div class="mf-col">
           <h4>資源</h4>
           <a href="/guide/">使用指南</a>
-          <a href="/fqa/">常見問題</a>
+          <a href="/faq/">常見問題</a>
           <a href="/LanYu.html">懶魚の日記</a>
         </div>
         <div class="mf-col">
@@ -76,7 +76,7 @@ export default hopeTheme({
 
     // 添加自定義類型的本地化配置
     blogLocales: {
-        fqa: "常見問題",
+        faq: "常見問題",
     },
 
     blog: {
@@ -113,10 +113,10 @@ export default hopeTheme({
             // 使用 type 配置定義常見問題類型
             type: [
                 {
-                    key: "fqa",
+                    key: "faq",
                     filter: ({filePathRelative}) => 
-                        filePathRelative ? filePathRelative.startsWith("fqa/") : false,
-                    path: "/fqa/",
+                        filePathRelative ? filePathRelative.startsWith("faq/") : false,
+                    path: "/faq/",
                     layout: "BlogType",
                     frontmatter: () => ({
                         title: "常見問題",

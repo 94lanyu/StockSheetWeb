@@ -137,7 +137,7 @@
 5. `/guide/feature/多種視覺化圖表.md`
 6. `/guide/feature/自動化計算.md`
 7. 其餘 feature 和 sheets 頁面
-8. `/fqa/` 列表頁
+8. `/faq/` 列表頁
 
 **撰寫格式**（每頁 frontmatter）
 
@@ -231,10 +231,10 @@ description: "台股訂閱版支援自動更新成交價、損益計算、多種
 
 | 現在 | 建議 |
 |------|------|
-| `/fqa/2021-05-19.html` | `/fqa/現金股利如何記錄.html` |
-| `/fqa/2021-05-20.html` | `/fqa/股票股利如何記錄.html` |
-| `/fqa/2022-11-01.html` | `/fqa/交易紀錄填寫方式.html` |
-| `/fqa/2024-09-19.html` | `/fqa/多家券商如何管理.html` |
+| `/faq/2021-05-19.html` | `/faq/現金股利如何記錄.html` |
+| `/faq/2021-05-20.html` | `/faq/股票股利如何記錄.html` |
+| `/faq/2022-11-01.html` | `/faq/交易紀錄填寫方式.html` |
+| `/faq/2024-09-19.html` | `/faq/多家券商如何管理.html` |
 
 **實作步驟**
 
@@ -249,15 +249,15 @@ description: "台股訂閱版支援自動更新成交價、損益計算、多種
 
 - 32 個 MD 檔案以 `git mv` 重新命名為關鍵字 slug
 - 5 個 FAQ 間交叉連結已同步更新
-- 32 個 HTML redirect stub 建立於 `src/.vuepress/public/fqa/`
+- 32 個 HTML redirect stub 建立於 `src/.vuepress/public/faq/`
   - 採 `meta http-equiv="refresh"` + JS `location.replace()` 雙重 redirect
   - GitHub Pages 不支援 server-side 301，使用 client-side redirect 替代
   - 含 `<link rel="canonical">` 指向新 URL，避免 Google 收錄舊頁面
 
 **如何測試**
 
-1. Build 後確認新 URL 的 HTML 存在於 `dist/fqa/` 目錄（中文檔名）
-2. 確認 `dist/fqa/2021-05-19.html` 存在（redirect stub）並含 meta refresh
+1. Build 後確認新 URL 的 HTML 存在於 `dist/faq/` 目錄（中文檔名）
+2. 確認 `dist/faq/2021-05-19.html` 存在（redirect stub）並含 meta refresh
 3. 送出新 sitemap 到 GSC 後，2-4 週內觀察新 URL 是否被收錄
 4. 用 [Ahrefs Webmaster Tools](https://ahrefs.com/webmaster-tools)（免費）確認舊 URL 的外部連結流量轉移情況
 
@@ -398,8 +398,8 @@ sitemap: {
 | `/guide/version/*` | 0.9 | weekly |
 | `/guide/feature/*` | 0.8 | monthly |
 | `/guide/sheets/*` | 0.7 | monthly |
-| `/fqa/` | 0.7 | weekly |
-| `/fqa/*` | 0.5 | yearly |
+| `/faq/` | 0.7 | weekly |
+| `/faq/*` | 0.5 | yearly |
 | `/LanYu.html` | 0.4 | monthly |
 
 **如何測試**

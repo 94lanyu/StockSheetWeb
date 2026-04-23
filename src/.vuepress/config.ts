@@ -172,7 +172,7 @@ export default defineUserConfig({
                 page.frontmatter.sitemap = { priority: 0.8, changefreq: 'monthly' };
             } else if (rel.startsWith('guide/')) {
                 page.frontmatter.sitemap = { priority: 0.7, changefreq: 'monthly' };
-            } else if (rel.startsWith('fqa/')) {
+            } else if (rel.startsWith('faq/')) {
                 page.frontmatter.sitemap = { priority: 0.5, changefreq: 'yearly' };
             } else if (rel === 'LanYu.md') {
                 page.frontmatter.sitemap = { priority: 0.4, changefreq: 'monthly' };
@@ -181,7 +181,7 @@ export default defineUserConfig({
 
         // T-04：為所有 FAQ 頁面自動注入 QAPage Schema
         // 使用 page.title（從 H1 取得），而非 page.frontmatter.title（FAQ 頁沒有設此欄位）
-        if (!page.filePathRelative?.startsWith('fqa/')) return;
+        if (!page.filePathRelative?.startsWith('faq/')) return;
         const title = page.title;
         const description = page.frontmatter.description as string | undefined;
         if (!title) return;

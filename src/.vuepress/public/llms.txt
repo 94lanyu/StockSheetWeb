@@ -41,4 +41,4 @@
 
 ## 常見問題
 
-- [常見問題](https://94lanyu.github.io/fqa/): 使用問題、功能說明、設定方式的 Q&A 彙整（35篇）
+- [常見問題](https://94lanyu.github.io/faq/): 使用問題、功能說明、設定方式的 Q&A 彙整（35篇）

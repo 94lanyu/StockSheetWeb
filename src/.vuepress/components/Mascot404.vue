@@ -26,7 +26,7 @@
         <div class="nf-actions">
           <button class="pillbtn mint" @click="goBack">← 回上一頁</button>
           <RouterLink to="/" class="pillbtn ghost">🏠 回首頁</RouterLink>
-          <RouterLink to="/fqa/" class="pillbtn ghost">🔍 常見問題</RouterLink>
+          <RouterLink to="/faq/" class="pillbtn ghost">🔍 常見問題</RouterLink>
         </div>
 
         <div class="suggestions">
@@ -41,8 +41,8 @@
               <span class="tt">/guide/sheets</span>
             </li>
             <li>
-              <RouterLink to="/fqa/">常見問題</RouterLink>
-              <span class="tt">/fqa</span>
+              <RouterLink to="/faq/">常見問題</RouterLink>
+              <span class="tt">/faq</span>
             </li>
             <li>
               <a href="https://forms.gle/RsfJdnReB1pzahQM6" target="_blank" rel="noopener">免費試用申請</a>
