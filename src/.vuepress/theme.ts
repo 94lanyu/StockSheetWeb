@@ -90,6 +90,7 @@ export default hopeTheme({
     },
 
     plugins: {
+        readingTime: false,
         // You should generate and use your own comment service
         // comment: {
         //   provider: "Giscus",

@@ -1012,7 +1012,7 @@ div[class*="language-"] {
     background: var(--card) !important;
     border-radius: 18px !important;
     box-shadow: var(--mascot-shadow-card) !important;
-    border: 0 !important;
+    border: 1.5px solid var(--hairline) !important;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1090,7 +1090,6 @@ div[class*="language-"] {
     flex-wrap: wrap;
     align-items: center;
     gap: 4px;
-    padding: 8px 20px 18px;
     font-size: 12px;
     font-family: var(--font-sans);
     color: var(--fg-3);
