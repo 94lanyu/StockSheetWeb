@@ -74,8 +74,32 @@ export default hopeTheme({
         },
     },
 
+    metaLocales: {
+        prev: "上一篇",
+        next: "下一篇",
+        toc: "本頁目錄",
+    },
+
+    paginationLocales: {
+        prev: "上一頁",
+        next: "下一頁",
+        navigate: "跳轉到",
+        action: "前往",
+        errorText: "請輸入 1 到 $page 之間的頁碼！",
+    },
+
     // 添加自定義類型的本地化配置
     blogLocales: {
+        article: "文章",
+        articleList: "文章列表",
+        category: "分類",
+        tag: "標籤",
+        timeline: "時間軸",
+        timelineTitle: "昨日不在",
+        all: "全部",
+        intro: "個人介紹",
+        star: "星標",
+        empty: "$text 為空",
         faq: "常見問題",
     },
 

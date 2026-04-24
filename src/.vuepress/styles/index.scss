@@ -909,35 +909,52 @@ div[class*="language-"] {
     color: var(--fg-3);
     font-family: var(--font-sans);
     border-top: 2px dashed var(--hairline) !important;
-    padding-top: 20px !important;
-    margin-top: 32px !important;
+    padding-top: 16px !important;
 
     .vp-meta-label { color: var(--fg-3); font-weight: 600; }
 
     a { color: var(--mint-ink) !important; &:hover { color: var(--coral-600) !important; } }
+
+    // meta 完全空時隱藏，避免留下多餘間距
+    &:has(.git-info:empty):not(:has(.vp-meta-item:not(:empty))) {
+        display: none !important;
+    }
 }
 
 .vp-page-nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px dashed var(--hairline) !important;
     font-family: var(--font-sans);
 
-    .vp-page-nav-prev,
-    .vp-page-nav-next {
+    .prev,
+    .next {
         background: var(--card);
+        border: none !important;
         border-radius: 16px;
         box-shadow: var(--mascot-shadow-card);
         padding: 16px 20px;
         text-decoration: none;
-        transition: box-shadow .15s;
+        transition: box-shadow .15s, transform .15s;
 
-        &:hover { box-shadow: 0 4px 0 var(--yellow-600); }
+        &:hover { box-shadow: 0 4px 0 var(--yellow-600); background: var(--card) !important; transform: translateY(-2px); }
     }
 
-    .vp-page-nav-title { font-size: 15px; font-weight: 600; color: var(--ink); }
-    .vp-page-nav-hint  { font-size: 12px; color: var(--fg-3); margin-bottom: 4px; font-family: var(--font-mono); letter-spacing: .05em; }
+    .next { text-align: right; }
+
+    .link { font-size: 15px; font-weight: 600; color: var(--mint--ink); display: flex; align-items: center; gap: 8px; }
+    .next .link { justify-content: flex-end; }
+    .hint { font-size: 12px; color: var(--fg-3); margin-bottom: 4px; font-family: var(--font-mono); letter-spacing: .05em; }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+
+        .prev,
+        .next { padding: 14px 16px; }
+    }
 }
 
 // ==========================================================================
