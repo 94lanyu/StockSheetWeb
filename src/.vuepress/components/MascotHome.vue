@@ -31,15 +31,6 @@
               🪀 試算表預覽
             </a>
           </div>
-          <div class="trust">
-            <div class="avatars">
-              <span>🐱</span>
-              <span class="a2">🐰</span>
-              <span class="a3">🦊</span>
-              <span class="a4">🐻</span>
-            </div>
-            <div>已經有 <b>2,400+</b> 位投資人在用</div>
-          </div>
         </div>
         <div class="mascot-wrap">
           <div class="mascot-bg"></div>
@@ -87,8 +78,8 @@
 
     <section class="preview shell">
       <div class="preview-eyebrow">成果預覽</div>
-      <h2 class="section-h">三步完成後，長這樣。</h2>
-      <div class="section-sub">數字、圖表、損益全在一張表裡，不用開別的視窗。</div>
+      <h2 class="section-h">持續記錄後，你的帳本長這樣。</h2>
+      <div class="section-sub">每一筆紀錄，都在幫你累積這個畫面。數字、圖表、損益全在一張表裡。</div>
       <div class="preview-frame">
         <div class="preview-bar">
           <span class="dot r"></span>
@@ -106,11 +97,12 @@
         <div class="chip">📸 歷史快照</div>
         <div class="chip">🔄 自動更新</div>
       </div>
+      <div class="preview-note">剛建好時是空的 — 每筆交易紀錄後，它就長大一點。</div>
     </section>
 
     <section id="features" class="features shell">
       <h2 class="section-h">它都幫你做了哪些懶事？</h2>
-      <div class="section-sub">你的工作就是 — 紀錄買了什麼、賣了什麼。其他交給魚。</div>
+      <div class="section-sub">你的工作就是 — 紀錄買了什麼、賣了什麼。其他交給它。</div>
       <div class="fgrid">
         <a href="/guide/feature/自動更新股票成交價.html" class="fcard c1">
           <div class="ic">📈</div>
@@ -229,38 +221,6 @@
   align-items: center;
 }
 
-.trust {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 26px;
-  font-size: 13px;
-  color: var(--fg-3);
-
-  b { color: var(--ink-soft); }
-}
-
-.avatars {
-  display: flex;
-
-  span {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid var(--paper);
-    margin-left: -8px;
-    background: var(--mint-100);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-
-    &:first-child { margin-left: 0; }
-    &.a2 { background: var(--coral-100); }
-    &.a3 { background: var(--yellow-100); }
-    &.a4 { background: var(--blue-100); }
-  }
-}
 
 // MASCOT --------------------------------------------------------
 .mascot-wrap {
@@ -493,6 +453,13 @@
     height: auto;
     display: block;
   }
+}
+
+.preview-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--fg-3);
+  margin-top: 14px;
 }
 
 .preview-chips {

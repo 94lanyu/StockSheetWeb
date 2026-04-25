@@ -729,7 +729,11 @@ html[data-theme="dark"] .pillbtn.ghost {
 
     @media (max-width: 760px) {
         padding: 36px 20px 20px !important;
-        .mf-wrap  { grid-template-columns: 1fr; gap: 28px; }
+        .mf-wrap {
+            grid-template-columns: 1fr 1fr;
+            gap: 28px 20px;
+        }
+        .mf-brand { grid-column: 1 / -1; }
         .mf-legal { flex-direction: column; gap: 8px; text-align: center; justify-content: center; }
     }
 }
