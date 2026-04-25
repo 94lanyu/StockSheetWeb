@@ -52,7 +52,7 @@ export default hopeTheme({
           <h4>資源</h4>
           <a href="/guide/">使用指南</a>
           <a href="/faq/">常見問題</a>
-          <a href="/LanYu.html">懶魚の日記</a>
+          <a href="/LanYu.html">懶魚の介紹</a>
         </div>
         <div class="mf-col">
           <h4>聯絡</h4>

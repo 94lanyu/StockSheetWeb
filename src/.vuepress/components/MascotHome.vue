@@ -85,6 +85,29 @@
       </div>
     </section>
 
+    <section class="preview shell">
+      <div class="preview-eyebrow">成果預覽</div>
+      <h2 class="section-h">三步完成後，長這樣。</h2>
+      <div class="section-sub">數字、圖表、損益全在一張表裡，不用開別的視窗。</div>
+      <div class="preview-frame">
+        <div class="preview-bar">
+          <span class="dot r"></span>
+          <span class="dot y"></span>
+          <span class="dot g"></span>
+          <div class="preview-url">你的 Google 試算表 · 儀表板</div>
+        </div>
+        <div class="preview-img">
+          <img src="/images/台股訂閱版/儀表板.webp" alt="台股訂閱版儀表板截圖" loading="lazy" />
+        </div>
+      </div>
+      <div class="preview-chips">
+        <div class="chip">📊 視覺化圖表</div>
+        <div class="chip">💹 持股損益</div>
+        <div class="chip">📸 歷史快照</div>
+        <div class="chip">🔄 自動更新</div>
+      </div>
+    </section>
+
     <section id="features" class="features shell">
       <h2 class="section-h">它都幫你做了哪些懶事？</h2>
       <div class="section-sub">你的工作就是 — 紀錄買了什麼、賣了什麼。其他交給魚。</div>
@@ -347,7 +370,7 @@
 }
 
 // STEPS ---------------------------------------------------------
-.steps { padding-top: 80px; padding-bottom: 60px; position: relative; }
+.steps { padding-top: 60px; padding-bottom: 60px; position: relative; }
 
 .steps-grid {
   display: grid;
@@ -395,8 +418,104 @@
   }
 }
 
+// PREVIEW -------------------------------------------------------
+.preview {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.preview-eyebrow {
+  display: inline-block;
+  background: #7FCEC0;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.preview-frame {
+  margin: 36px auto 0;
+  max-width: 920px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 2px 0 #E6DDD4,
+    0 24px 64px rgba(60, 52, 48, .14),
+    0 64px 140px rgba(60, 52, 48, .06);
+  overflow: hidden;
+  transform: perspective(1400px) rotateX(4deg) scale(.98);
+  transition: transform .45s cubic-bezier(.16, 1, .3, 1);
+
+  &:hover {
+    transform: perspective(1400px) rotateX(0deg) scale(1);
+  }
+}
+
+.preview-bar {
+  background: #F5EFEB;
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #E6DDD4;
+
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    &.r { background: #FF9B8A; }
+    &.y { background: #FFE066; }
+    &.g { background: #7FCEC0; }
+  }
+}
+
+.preview-url {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  color: #8A7F77;
+  font-family: var(--font-mono);
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px 10px;
+  margin: 0 32px;
+}
+
+.preview-img {
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.preview-chips {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+
+  .chip {
+    background: #fff;
+    border: 1.5px solid #E6DDD4;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: #6B5D56;
+    font-weight: 500;
+    box-shadow: 0 2px 0 #E6DDD4;
+  }
+}
+
 // FEATURES ------------------------------------------------------
-.features { padding-top: 80px; padding-bottom: 80px; position: relative; }
+.features { padding-top: 60px; padding-bottom: 60px; position: relative; }
 
 .fgrid {
   display: grid;
@@ -450,7 +569,7 @@
 }
 
 // CTA -----------------------------------------------------------
-.cta { padding-top: 80px; padding-bottom: 100px; }
+.cta { padding-top: 60px; padding-bottom: 100px; }
 
 .cta-card {
   background: #2A2420;
@@ -521,5 +640,6 @@
   .sticker.s1 { left: -10px; top: 20px; }
   .sticker.s3 { right: -10px; }
   .speech { right: 0; top: 10px; }
+  .preview-frame { transform: none; }
 }
 </style>
