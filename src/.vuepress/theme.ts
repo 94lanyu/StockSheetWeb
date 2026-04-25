@@ -27,7 +27,7 @@ export default hopeTheme({
     navbarLayout: {
         start: ["Brand", "Links"],
         center: [],
-        end: ["Language", "Repo", "FreeTrial", "Outlook", "Search"],
+        end: ["Language", "Repo", "FreeTrial", "Subscribe", "Outlook", "Search"],
     },
 
     // sidebar
