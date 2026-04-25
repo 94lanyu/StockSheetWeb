@@ -16,13 +16,55 @@ export default hopeTheme({
 
     docsDir: "src",
 
+    // 關掉 hope 預設的 copyright 列（下方自訂 footer 已有版權資訊，避免重複）
+    copyright: "",
+
     // navbar
     navbar,
+
+    // nav 配置：logo + links 靠左、右側放 FreeTrial / Outlook / Search
+    // 對齊 mascot 設計（logo 旁邊緊跟著 links，最右側才是按鈕群）
+    navbarLayout: {
+        start: ["Brand", "Links"],
+        center: [],
+        end: ["Language", "Repo", "FreeTrial", "Subscribe", "Outlook", "Search"],
+    },
 
     // sidebar
     sidebar,
 
-    footer: '<address><strong>全自動股票管理表 - 股票記帳、投資組合管理與自動更新</strong><br>作者：懶魚&nbsp;&nbsp;Email：<a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a></address>',
+    footer: `
+      <div class="mf-wrap">
+        <div class="mf-col mf-brand">
+          <div class="mf-logo">
+            <img src="/mascot/logo.webp" alt="懶魚" />
+            <b>懶魚 LanYu</b>
+          </div>
+          <div class="mf-tag">只需做好交易紀錄，<br />其餘的都幫你搞定 ～ ✨</div>
+        </div>
+        <div class="mf-col">
+          <h4>產品</h4>
+          <a href="/guide/version/台股訂閱版.html">台股訂閱版</a>
+          <a href="/guide/version/美股收費版.html">美股收費版</a>
+          <a href="/guide/version/客製化.html">客製化版本</a>
+        </div>
+        <div class="mf-col">
+          <h4>資源</h4>
+          <a href="/guide/">使用指南</a>
+          <a href="/faq/">常見問題</a>
+          <a href="/LanYu.html">懶魚の介紹</a>
+        </div>
+        <div class="mf-col">
+          <h4>聯絡</h4>
+          <a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a>
+          <a href="https://www.facebook.com/kevin.lazy.fish" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <address class="mf-legal">
+        <span>© 2026 懶魚 LanYu · 全自動股票管理表</span>
+        <span>作者：懶魚&nbsp;&nbsp;Email：<a href="mailto:94lanyu@gmail.com">94lanyu@gmail.com</a></span>
+      </address>
+    `,
 
     displayFooter: true,
 
@@ -32,9 +74,37 @@ export default hopeTheme({
         },
     },
 
+    print: false,
+
+    metaLocales: {
+        prev: "上一篇",
+        next: "下一篇",
+        toc: "本頁目錄",
+        category: "分類",
+        tag: "標籤",
+    },
+
+    paginationLocales: {
+        prev: "上一頁",
+        next: "下一頁",
+        navigate: "跳轉到",
+        action: "前往",
+        errorText: "請輸入 1 到 $page 之間的頁碼！",
+    },
+
     // 添加自定義類型的本地化配置
     blogLocales: {
-        fqa: "常見問題",
+        article: "文章",
+        articleList: "文章列表",
+        category: "分類",
+        tag: "標籤",
+        timeline: "時間軸",
+        timelineTitle: "昨日不在",
+        all: "全部",
+        intro: "個人介紹",
+        star: "星標",
+        empty: "$text 為空",
+        faq: "常見問題",
     },
 
     blog: {
@@ -48,6 +118,7 @@ export default hopeTheme({
     },
 
     plugins: {
+        readingTime: false,
         // You should generate and use your own comment service
         // comment: {
         //   provider: "Giscus",
@@ -70,10 +141,10 @@ export default hopeTheme({
             // 使用 type 配置定義常見問題類型
             type: [
                 {
-                    key: "fqa",
+                    key: "faq",
                     filter: ({filePathRelative}) => 
-                        filePathRelative ? filePathRelative.startsWith("fqa/") : false,
-                    path: "/fqa/",
+                        filePathRelative ? filePathRelative.startsWith("faq/") : false,
+                    path: "/faq/",
                     layout: "BlogType",
                     frontmatter: () => ({
                         title: "常見問題",

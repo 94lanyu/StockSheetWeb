@@ -60,7 +60,7 @@ export default navbar([
     {
         text: "常見問題",
         icon: "circle-question",
-        link: "/fqa/",
+        link: "/faq/",
     },
     {
         text: "懶魚",

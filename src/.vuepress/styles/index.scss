@@ -1,6 +1,1578 @@
-// place your custom styles here
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+// ==========================================================================
+// Mascot 風格全域樣式
+// 來源：claude-design/colors_and_type.css + redesign/mascot/mascot.css
+// ==========================================================================
 
 :root {
-    --font-family: 'Noto Sans TC', sans-serif !important;
+    // --- Mascot 色票 --------------------------------------------------------
+    --mint:       #7FCEC0;
+    --mint-600:   #4FB3A3;
+    --mint-ink:   #1A4A42;
+    --mint-100:   #D7EFEA;
+    --mint-50:    #EDF7F5;
+
+    --coral:      #FF9B8A;
+    --coral-600:  #CE6F5F;
+    --coral-100:  #FFE2DC;
+
+    --red:        #E5503F;
+    --red-600:    #B53B2E;
+
+    --green:      #2E9E6E;
+    --green-100:  #DCEFE5;
+
+    --yellow:     #FFE066;
+    --yellow-600: #C9B100;
+    --yellow-100: #FFF1C2;
+    --yellow-ink: #806300;
+
+    --blue-100:   #CCE0F4;
+    --blue-ink:   #1B4B7A;
+    --indigo-100: #E0E7FF;
+
+    --ink:        #2A2420;
+    --ink-soft:   #3C3430;
+    --fg-1:       #4A5458;
+    --fg-2:       #6B5D56;
+    --fg-3:       #8A7F77;
+
+    --hairline:   #E6DDD4;
+    --hairline-soft: #F4EEE5;
+    --paper:      #FFF8F0;
+    --card:       #FFFFFF;
+
+    --mascot-shadow-card: 0 4px 0 var(--hairline);
+    --mascot-shadow-card-hl: 0 4px 0 var(--yellow-600);
+
+    // --- Type --------------------------------------------------------------
+    --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont,
+                 'PingFang TC', 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+    --font-mono: 'Roboto Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --font-family: var(--font-sans) !important;
+}
+
+// 讓整站預設字體用 Noto Sans TC + 溫潤紙色背景
+html,
+body {
+    font-family: var(--font-sans);
+    background: var(--paper);
+    color: var(--ink-soft);
+}
+
+// 全站主 accent 強制 mint（防 hope 舊綠外洩到 :root）
+:root,
+#app {
+    --vp-c-accent-hover:  var(--yellow);
+    --vp-c-accent-bg:     var(--yellow);
+    --vp-c-bg-alt:        var(--hairline-soft);
+    --vp-c-text-mute:     var(--fg-3);
+}
+
+// ==========================================================================
+// Dark Mode — Mascot Night 暗色主題
+// 觸發器：html[data-theme="dark"]（由 vuepress-theme-hope Outlook 元件寫入）
+// ==========================================================================
+
+html[data-theme="dark"] {
+    // --- 基礎底色 -----------------------------------------------------------
+    --paper:         #181310;
+    --card:          #241D18;
+    --ink:           #F2EBE0;
+    --ink-soft:      #D4C8BB;
+    --fg-1:          #B3A598;
+    --fg-2:          #987E72;
+    --fg-3:          #74665C;
+    --hairline:      #3C2E24;
+    --hairline-soft: #2B2018;
+
+    // --- 品牌色調整（深色底下的 tint 要改為深色版本）----------------------
+    --mint-100:   #1B3835;
+    --mint-50:    #121E1D;
+    --mint-ink:   #A0DDD4;
+
+    --coral-100:  #3F1F1C;
+    --coral-600:  #FF8573;
+
+    --yellow-100: #2F280A;
+    --yellow-ink: #FFE066;
+
+    --blue-100:   #182845;
+    --indigo-100: #1D2040;
+    --green-100:  #172B20;
+    --green:      #4DBB8A;
+
+    // --- 陰影（深色底下改用半透明黑）--------------------------------------
+    --mascot-shadow-card:    0 4px 0 rgba(0,0,0,.5);
+    --mascot-shadow-card-hl: 0 4px 0 var(--yellow-600);
+
+    // --- VuePress Hope CSS 變數覆寫 ----------------------------------------
+    --vp-c-bg:        var(--paper);
+    --vp-c-bg-alt:    var(--hairline-soft);
+    --vp-c-bg-elv:    var(--card);
+    --vp-c-text:      var(--ink);
+    --vp-c-text-mute: var(--fg-3);
+    --vp-c-border:    var(--hairline);
+    --vp-c-divider:   var(--hairline);
+}
+
+// body / app 底色跟隨 dark 變數
+html[data-theme="dark"] body,
+html[data-theme="dark"] #app {
+    background: var(--paper);
+    color: var(--ink-soft);
+}
+
+// Navbar 深色背景（原本是 hardcode 的暖白色，需覆寫）
+html[data-theme="dark"] .vp-navbar {
+    background: rgba(24, 19, 16, 0.93) !important;
+    border-bottom: 1px solid var(--hairline) !important;
+}
+
+// Footer 在深色模式要更深（否則 --ink 在 dark 會變成淺色）
+html[data-theme="dark"] .vp-footer-wrapper {
+    background: #0E0A08 !important;
+}
+
+// Dropdown popover 深色
+html[data-theme="dark"] .vp-dropdown {
+    background: var(--card) !important;
+    border-color: var(--hairline) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.45) !important;
+}
+
+// Sidebar 深色
+html[data-theme="dark"] .vp-sidebar {
+    background: var(--paper) !important;
+    border-right-color: var(--hairline) !important;
+}
+
+// 代碼塊底色（shiki 主題已有 dark/light，補整體 wrapper 圓角背景）
+html[data-theme="dark"] div[class*="language-"] {
+    background: #1E1613;
+}
+
+// 行內 code 深色
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) :not(pre) > code {
+    background: #2E2218;
+    color: var(--coral-600);
+}
+
+// 表格深色
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) table {
+    background: var(--card);
+    thead th { background: var(--yellow) !important; }
+    tbody tr { border-top-color: var(--hairline); }
+}
+
+// blockquote 深色
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) blockquote {
+    background: var(--card);
+}
+
+// hint-container 深色
+html[data-theme="dark"] .hint-container,
+html[data-theme="dark"] .custom-container {
+    background: var(--mint-100);
+    &.tip     { background: var(--yellow-100); }
+    &.info    { background: var(--mint-100); }
+    &.warning { background: var(--coral-100); }
+    &.danger, &.caution { background: var(--coral-100); }
+}
+
+// page-nav 深色
+html[data-theme="dark"] .vp-page-nav .prev,
+html[data-theme="dark"] .vp-page-nav .next {
+    background: var(--card);
+    &:hover { background: var(--card) !important; }
+}
+
+// 文章卡片深色
+html[data-theme="dark"] .vp-article-item {
+    background: var(--card) !important;
+    border-color: var(--hairline) !important;
+}
+
+// 分頁數字深色
+html[data-theme="dark"] .vp-pagination-number > div {
+    background: var(--card);
+}
+
+html[data-theme="dark"] .vp-pagination-button {
+    background: var(--card);
+}
+
+// tag / category chip 深色
+html[data-theme="dark"] .vp-tag-item,
+html[data-theme="dark"] .vp-category-item {
+    background: var(--card);
+}
+// /tag/ /category/ 頁面：Hope colorX 彩虹底色在深色模式下配白字，確保對比
+html[data-theme="dark"] .vp-tag-item a,
+html[data-theme="dark"] .vp-category-item a {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+// active 狀態：黃底 / 薄荷底 → 改深字
+html[data-theme="dark"] .vp-tag-item.active a {
+    color: #2A2420 !important;
+}
+
+// Blog count pill 深色
+html[data-theme="dark"] .vp-blog-count {
+    background: var(--card);
+}
+
+// article-type 切換器：非 active 狀態底色跟隨 card（active 保留黃底，不覆寫）
+html[data-theme="dark"] .vp-article-type:not(.active) {
+    background: var(--card);
+}
+
+// back-to-top 深色
+html[data-theme="dark"] .vp-back-to-top-button {
+    background: var(--card) !important;
+    border-color: var(--hairline) !important;
+}
+
+// ==========================================================================
+// Dark Mode 修正：黃底元素 → 強制深色文字
+// 問題：--ink 在 dark mode 為淡色（#F2EBE0），放在黃底上幾乎看不到
+// 規則：background = yellow (#FFE066) 時，text 固定用原始深色 #2A2420
+// ==========================================================================
+
+// Issue 1 — Sidebar 選中項目
+html[data-theme="dark"] .vp-sidebar a.route-link-active,
+html[data-theme="dark"] .vp-sidebar a.active {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — Navbar 下拉選單選中項目
+html[data-theme="dark"] .vp-dropdown .vp-dropdown-item > .auto-link.route-link-active,
+html[data-theme="dark"] .vp-dropdown .vp-dropdown-subitem > .auto-link.route-link-active {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — 文章類型切換 tab 選中（全部 / 星標 / 常見問題）
+html[data-theme="dark"] .vp-article-type.active,
+html[data-theme="dark"] .vp-article-type.active a {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — 分頁 active 頁碼
+html[data-theme="dark"] .vp-pagination-number > div.active {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — 右側 Blog info icon 切換按鈕（文章 / 分類 / 標籤 / 時間軸）
+html[data-theme="dark"] .vp-blog-info-wrapper button.active,
+html[data-theme="dark"] .vp-blog-panel-control .active {
+    color: #2A2420 !important;
+}
+
+// Issue 2 — 表格 header（黃底）文字強制深色
+// 需匹配原始 selector `.vp-page:not(:has(.mascot-page)) table thead th` 的優先度
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) table thead th {
+    color: #2A2420 !important;
+}
+
+// Issue 3 — 文章 tag chip：提高對比度
+// 深色模式下 hairline-soft (#2B2018) 配 fg-2 (#987E72) 幾乎無對比
+html[data-theme="dark"] .page-tag-item {
+    background: #3D3028 !important;   // 稍亮的暖棕，讓 chip 跳脫背景
+    color: #C8B0A0 !important;        // 更亮的文字，確保可讀性
+
+    &:hover {
+        background: var(--yellow-100) !important;
+        color: var(--yellow-ink) !important;
+    }
+}
+
+// 首頁 preview chips：scoped color: var(--fg-2) 在深色模式下太暗
+html[data-theme="dark"] .preview-chips .chip {
+    color: var(--ink-soft) !important;
+    border-color: var(--hairline) !important;
+}
+
+// 首頁 pillbtn 按鈕深色修正
+// .mint：薄荷底色配薄荷文字 → 改深字（#1B3835 在 #7FCEC0 上對比 ≈ 8.5:1）
+html[data-theme="dark"] .pillbtn.mint {
+    color: #1B3835 !important;
+}
+// .ghost：白底配 --ink-soft（淡米色）→ 改深字
+html[data-theme="dark"] .pillbtn.ghost {
+    color: #2A2420 !important;
+}
+
+// ==========================================================================
+// 首頁 MascotHome 元件樣式 (blob / button / heading)
+// ==========================================================================
+
+.mascot-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: .55;
+    z-index: 0;
+    pointer-events: none;
+
+    &.pink   { background: var(--coral-100); }
+    &.mint   { background: var(--mint-100); }
+    &.yellow { background: var(--yellow-100); }
+    &.blue   { background: var(--blue-100); }
+}
+
+.pillbtn {
+    background: var(--red);
+    color: #fff;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--red-600), 0 8px 20px -8px rgba(229, 80, 63, .6);
+    transition: transform .1s;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 var(--red-600), 0 4px 10px -4px rgba(229, 80, 63, .6);
+    }
+
+    &.mint {
+        background: var(--mint);
+        color: var(--mint-ink);
+        box-shadow: 0 4px 0 var(--mint-600), 0 8px 20px -8px rgba(127, 206, 192, .6);
+        &:active {
+            box-shadow: 0 2px 0 var(--mint-600), 0 4px 10px -4px rgba(127, 206, 192, .6);
+        }
+    }
+
+    &.ghost {
+        background: #fff;
+        color: var(--ink-soft);
+        box-shadow: 0 4px 0 var(--hairline), 0 8px 20px -8px rgba(0, 0, 0, .1);
+        &:active {
+            box-shadow: 0 2px 0 var(--hairline), 0 4px 10px -4px rgba(0, 0, 0, .1);
+        }
+    }
+
+    &.sm { padding: 8px 14px; font-size: 13px; }
+    &.lg { padding: 14px 24px; font-size: 16px; }
+}
+
+.mascot-h1 {
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1.05;
+    margin: 0;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    .hl {
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            height: 12px;
+            background: var(--yellow);
+            z-index: -1;
+            border-radius: 4px;
+            transform: rotate(-1deg);
+        }
+    }
+}
+
+.section-h {
+    font-size: clamp(30px, 4vw, 38px);
+    color: var(--ink);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+}
+
+.section-sub {
+    text-align: center;
+    color: var(--fg-2);
+    margin-bottom: 48px;
+    font-size: 15px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--fg-2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    margin-bottom: 18px;
+
+    &.mint   { background: var(--mint-100);   color: #2E6B63; }
+    &.yellow { background: var(--yellow-100); color: var(--yellow-ink); }
+    &.pink   { background: var(--coral-100);  color: #8F3A2F; }
+}
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.gain { color: var(--green); }
+.loss { color: var(--red); }
+
+// ==========================================================================
+// Navbar — mascot 風格
+// 對齊 mascot.css 的 nav.n：max-width 1200、無底線、透明底、按鈕在最右
+// ==========================================================================
+
+.vp-navbar {
+    // 把 1200 置中：左右 padding 用 viewport 差值
+    padding:
+        14px max(28px, calc((100vw - 1200px) / 2)) !important;
+    background: rgba(255, 248, 240, 0.92) !important;
+    backdrop-filter: saturate(140%) blur(12px);
+    // 移除 hope 預設的底部陰影 / 邊線（對齊 mascot.css，讓 nav 與內容顏色融合）
+    box-shadow: none !important;
+    border-bottom: 0 !important;
+}
+
+// 站名
+.vp-site-name {
+    color: var(--ink-soft) !important;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0;
+}
+
+// Logo 圓角 + 淡陰影（對齊 mascot）
+.vp-nav-logo {
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+// 讓 Brand 與 Links 並排、緊跟著
+.vp-navbar-start {
+    flex: 0 1 auto !important;
+    gap: 10px;
+}
+
+.vp-navbar-center { flex: 1 1 auto !important; }
+
+.vp-navbar-end {
+    flex: 0 0 auto !important;
+    gap: 4px;
+}
+
+// Links
+.vp-navbar .vp-nav-item > .auto-link {
+    color: var(--fg-2) !important;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 6px 10px !important;
+    transition: color .15s ease-out;
+
+    &:hover { color: var(--ink-soft) !important; }
+
+    // 黃色寬底線當 active 指示
+    &::before {
+        background: var(--yellow) !important;
+        height: 3px !important;
+        border-radius: 2px !important;
+    }
+
+    &.route-link-active {
+        color: var(--ink) !important;
+        font-weight: 600;
+    }
+}
+
+// 下拉觸發按鈕
+.vp-navbar .vp-nav-item .vp-dropdown-title {
+    color: var(--fg-2) !important;
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    background: transparent !important;
+    border: 0 !important;
+    cursor: pointer;
+    transition: color .15s ease-out;
+
+    &:hover {
+        color: var(--ink-soft) !important;
+
+        &::after { opacity: 1; transform: scaleX(1); }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        right: 20px;
+        bottom: 4px;
+        height: 3px;
+        background: var(--yellow);
+        border-radius: 2px;
+        opacity: 0;
+        transform: scaleX(0.6);
+        transform-origin: center;
+        transition: opacity .15s, transform .15s;
+        pointer-events: none;
+    }
+}
+
+// 下拉選單中含 active 子頁
+.vp-navbar .vp-nav-item > .vp-dropdown-wrapper:has(.route-link-active) > .vp-dropdown-title {
+    color: var(--ink) !important;
+    font-weight: 600;
+
+    &::after { opacity: 1; transform: scaleX(1); }
+}
+
+// ==========================================================================
+// Dropdown popover — 完全 mascot 配色（避免舊綠色外洩）
+// ==========================================================================
+
+.vp-dropdown {
+    background: var(--card) !important;
+    border: 1px solid var(--hairline) !important;
+    box-shadow: 0 8px 24px rgba(60, 52, 48, 0.12) !important;
+    border-radius: 14px !important;
+    padding: 8px !important;
+
+    .vp-dropdown-item {
+        > .auto-link,
+        .vp-dropdown-subtitle > .auto-link {
+            color: var(--ink-soft) !important;
+            font-weight: 500;
+            padding: 8px 12px !important;
+            border-radius: 8px;
+            background: transparent !important;
+
+            &:hover {
+                color: var(--ink-soft) !important;
+                background: var(--yellow-100) !important;
+            }
+
+            &.route-link-active {
+                color: var(--ink) !important;
+                background: var(--yellow) !important;
+                font-weight: 600;
+                box-shadow: 0 2px 0 var(--yellow-600);
+            }
+
+            &::before { display: none !important; }
+        }
+    }
+
+    .vp-dropdown-subtitle {
+        color: var(--fg-3) !important;
+        font-size: 12px !important;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 10px 12px 4px !important;
+        border-bottom: 0 !important;
+        margin: 0 !important;
+    }
+
+    .vp-dropdown-subitem > .auto-link {
+        color: var(--fg-2) !important;
+        font-size: 13px;
+        padding: 6px 12px 6px 20px !important;
+        border-radius: 6px;
+        background: transparent !important;
+
+        &:hover {
+            color: var(--ink-soft) !important;
+            background: var(--yellow-100) !important;
+        }
+
+        &.route-link-active {
+            color: var(--ink) !important;
+            background: var(--yellow) !important;
+            font-weight: 600;
+        }
+
+        &::before { display: none !important; }
+    }
+}
+
+// ==========================================================================
+// Back-to-Top 按鈕 & Scroll Progress 圈 — 改成 mascot mint
+// （使用者說右下角滑道最頂仍是舊綠色）
+// ==========================================================================
+
+.vp-back-to-top-button {
+    --back-to-top-c-bg: var(--card) !important;
+    --back-to-top-c-accent-bg: var(--mint) !important;
+    --back-to-top-c-accent-hover: var(--mint-600) !important;
+    --back-to-top-c-shadow: rgba(127, 206, 192, 0.25) !important;
+
+    background: var(--card) !important;
+    color: var(--mint) !important;
+    border: 1px solid var(--hairline) !important;
+
+    svg { color: inherit !important; }
+    svg path, svg polyline, svg line { stroke: currentColor !important; }
+
+    &:hover {
+        color: var(--mint-600) !important;
+        background: var(--mint-50) !important;
+    }
+}
+
+.vp-scroll-progress circle {
+    stroke: var(--mint) !important;
+}
+
+// ==========================================================================
+// Footer — mascot 風格 (隱藏 hope 預設 copyright，避免和 mf-legal 重複)
+// ==========================================================================
+
+.vp-footer-wrapper {
+    background: var(--ink) !important;
+    color: #B8B0A8 !important;
+    border-top: 0 !important;
+    padding: 48px 28px 24px !important;
+    margin-top: 40px;
+    display: block !important;       // 復原 hope 的 flex 對齊 (單欄 footer)
+    text-align: left !important;
+
+    // hope 自動產生的 copyright 跟我們自訂 footer 內的 mf-legal 重複，隱藏它
+    > .vp-copyright { display: none !important; }
+
+    .vp-footer {
+        color: #B8B0A8 !important;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    a {
+        color: #FFE066 !important;
+        text-decoration: none;
+        &:hover { color: #fff !important; }
+    }
+
+    .mf-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.4fr repeat(3, 1fr);
+        gap: 40px;
+    }
+
+    .mf-col {
+        h4 {
+            color: #fff;
+            font-size: 14px;
+            margin: 0 0 14px;
+            font-weight: 600;
+        }
+
+        a {
+            display: block;
+            font-size: 13px;
+            padding: 4px 0;
+            color: #B8B0A8 !important;
+
+            &:hover { color: #fff !important; }
+        }
+    }
+
+    .mf-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+
+        img { width: 44px; height: 44px; border-radius: 12px; }
+        b   { color: #fff; font-size: 18px; }
+    }
+
+    .mf-tag {
+        font-size: 13px;
+        line-height: 1.7;
+        color: #B8B0A8;
+    }
+
+    .mf-legal {
+        font-style: normal;
+        max-width: 1200px;
+        margin: 32px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 12px;
+        color: #8A7F77;
+
+        a { color: #FFE066 !important; }
+    }
+
+    @media (max-width: 960px) {
+        .mf-wrap { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+        padding: 36px 20px 20px !important;
+        .mf-wrap {
+            grid-template-columns: 1fr 1fr;
+            gap: 28px 20px;
+        }
+        .mf-brand { grid-column: 1 / -1; }
+        .mf-legal { flex-direction: column; gap: 8px; text-align: center; justify-content: center; }
+    }
+}
+
+// hope 在非首頁會用 margin-top: -2rem 把 footer 拉近，mascot 不要這個貼齊
+.vp-page:not(.not-found) + .vp-footer-wrapper {
+    margin-top: 40px !important;
+}
+
+// ==========================================================================
+// 文件頁（guide / fqa / LanYu 等）— 側邊欄 / TOC / markdown 呈現
+// 參考 claude-design/redesign/mascot/guide-dashboard.html
+// ==========================================================================
+
+// ---- 左側 Sidebar --------------------------------------------------------
+.vp-sidebar {
+    background: var(--paper) !important;
+    border-right: 1px solid var(--hairline) !important;
+    box-shadow: none !important;
+    font-family: var(--font-sans);
+
+    // group 標題
+    .vp-sidebar-group-heading,
+    > .vp-sidebar-items > .vp-sidebar-item > a:first-child,
+    > .vp-sidebar-items > li > p,
+    .vp-sidebar-header {
+        font-family: var(--font-sans);
+        font-size: 14px !important;
+        color: var(--fg-2) !important;
+        font-weight: 600 !important;
+        padding: 18px 16px 6px !important;
+    }
+
+    // 連結項
+    a {
+        color: var(--fg-2) !important;
+        font-size: 14px;
+        padding: 7px 14px !important;
+        border-radius: 10px;
+        margin: 1px 8px;
+        font-weight: 500;
+        transition: background .15s ease;
+
+        &:hover {
+            background: var(--card) !important;
+            color: var(--ink-soft) !important;
+        }
+
+        // active 以黃色強調（對齊 guide-dashboard sb a.act）
+        &.route-link-active,
+        &.active {
+            background: var(--yellow) !important;
+            color: var(--ink) !important;
+            font-weight: 600;
+            box-shadow: 0 2px 0 var(--yellow-600);
+
+            &::before { display: none !important; }
+        }
+    }
+
+    // scrollbar 收起
+    scrollbar-width: thin;
+    scrollbar-color: var(--hairline) transparent;
+}
+
+// ---- 右側 TOC ------------------------------------------------------------
+#toc,
+.vp-toc-placeholder {
+    .vp-toc-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding-inline-start: 16px;
+        margin-bottom: 10px;
+    }
+
+    .vp-toc-link {
+        font-size: 13px;
+        padding: 4px 16px;
+        color: var(--fg-2);
+        border-left: 0 !important;
+        line-height: 1.6;
+        transition: color .15s ease;
+
+        &:hover { color: var(--ink) !important; }
+    }
+
+    .vp-toc-item.active > .vp-toc-link {
+        color: var(--ink) !important;
+        font-weight: 600;
+    }
+
+    // marker 是唯一的進度指示線
+    .vp-toc-wrapper > .vp-toc-list::before {
+        display: none !important;
+    }
+
+    .vp-toc-marker {
+        background: var(--mint) !important;
+    }
+}
+
+// Blog 列表頁背景統一為 paper（覆蓋 Hope 預設白色）
+.vp-page.vp-blog {
+    background: var(--paper) !important;
+}
+
+// ---- 正文 markdown ------------------------------------------------------
+// Hope 的 markdown 並未包在 .theme-hope-content，需以 .vp-page 為範圍
+// 並排除 mascot-page（首頁）以免影響自訂 hero
+.vp-page:not(:has(.mascot-page)) {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+
+    p {
+        font-size: 15px;
+        line-height: 1.85;
+        color: var(--ink-soft);
+        margin: 14px 0;
+    }
+
+    h1 {
+        font-size: clamp(32px, 4vw, 48px) !important;
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        border-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    h2 {
+        font-size: 26px !important;
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.015em;
+        scroll-margin-top: calc(var(--navbar-height) + 20px);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 0 !important;
+        padding-bottom: 0 !important;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--yellow);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    }
+
+    h3 {
+        font-size: 18px !important;
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+        border-bottom: 0 !important;
+    }
+
+    h4 {
+        color: var(--ink) !important;
+        font-weight: 700 !important;
+    }
+
+    ul, ol {
+        font-size: 15px;
+        line-height: 1.9;
+        color: var(--ink-soft);
+
+        li { margin: 6px 0; }
+        li::marker { color: var(--mint); }
+    }
+
+    a:not(.header-anchor):not(.auto-link):not(.vp-toc-link) {
+        color: var(--mint-ink);
+        text-decoration-color: var(--mint);
+        text-underline-offset: 3px;
+
+        &:hover {
+            color: var(--coral-600);
+            text-decoration-color: var(--coral);
+        }
+    }
+
+    figure {
+        background: var(--card);
+        border-radius: 20px;
+        padding: 14px;
+        margin: 22px 0;
+        width: max-content;
+        max-width: 100%;
+
+        img { border-radius: 12px; max-width: 100%; display: block; }
+
+        figcaption {
+            font-size: 12px;
+            color: var(--fg-3);
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+    table {
+        width: max-content;
+        max-width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 18px 0;
+        font-size: 14px;
+        background: var(--card);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--mascot-shadow-card);
+        border: 0 !important;
+
+        th, td {
+            padding: 12px 16px !important;
+            text-align: left;
+            vertical-align: top;
+            border: 0 !important;
+        }
+
+        thead th {
+            background: var(--yellow) !important;
+            color: var(--ink) !important;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: .02em;
+        }
+
+        tbody tr { border-top: 1px solid var(--hairline-soft); }
+        tbody tr:nth-child(2n) { background: transparent !important; }
+        tbody td:first-child { font-weight: 600; color: var(--ink); }
+    }
+
+    // hope custom container (tip / info / warning / danger) → mascot callout
+    .hint-container,
+    .custom-container {
+        border: 0 !important;
+        border-radius: 18px;
+        margin: 22px 0;
+        padding: 16px 22px;
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--ink-soft);
+        background: var(--mint-100);
+        position: relative;
+
+        .hint-container-title,
+        .custom-container-title {
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        p { margin: 6px 0; font-size: 14px; }
+
+        &.tip { background: var(--yellow-100); color: var(--ink-soft); }
+        &.tip .hint-container-title,
+        &.tip .custom-container-title { color: var(--yellow-ink); }
+
+        &.info { background: var(--mint-100); }
+        &.info .hint-container-title,
+        &.info .custom-container-title { color: var(--mint-ink); }
+
+        &.warning { background: var(--coral-100); }
+        &.warning .hint-container-title,
+        &.warning .custom-container-title { color: #8F3A2F; }
+
+        &.danger,
+        &.caution { background: var(--coral-100); color: #8F3A2F; }
+        &.danger .hint-container-title,
+        &.danger .custom-container-title,
+        &.caution .hint-container-title,
+        &.caution .custom-container-title { color: #8F3A2F; }
+
+        &.note,
+        &.details { background: var(--detail-c-bg); }
+    }
+
+    :not(pre) > code {
+        background: var(--hairline-soft);
+        color: var(--coral-600);
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-family: var(--font-mono);
+        font-size: .9em;
+    }
+
+    blockquote {
+        background: var(--card);
+        border-left: 4px solid var(--mint) !important;
+        border-radius: 0 14px 14px 0;
+        color: var(--fg-2);
+        padding: 12px 16px;
+        margin: 18px 0;
+        box-shadow: var(--mascot-shadow-card);
+    }
+
+    hr {
+        border: 0;
+        border-top: 2px dashed var(--hairline);
+        margin: 16px 0;
+    }
+}
+
+// code block 圓角（保留 shiki 原本的配色與排版，不蓋掉它）
+div[class*="language-"] {
+    border-radius: 14px;
+    margin: 16px 0;
+    overflow: hidden;
+
+}
+
+// ==========================================================================
+// 首頁 MascotHome 在 hope 預設 Layout 裡 full-bleed
+// ==========================================================================
+.vp-page:has(.mascot-page) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    > .page-title,
+    > .vp-breadcrumb,
+    > .vp-toc-placeholder,
+    > .vp-toc,
+    > .vp-page-meta,
+    > .vp-page-nav,
+    > .catalog-wrapper {
+        display: none !important;
+    }
+
+    > .theme-hope-content {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+.theme-container.no-sidebar:has(.mascot-page) {
+    padding: 0 !important;
+    main#main-content { padding: 0 !important; }
+}
+
+.theme-container:has(.mascot-page) main#main-content {
+    padding-inline: 0 !important;
+    max-width: none !important;
+}
+
+.theme-container:has(.mascot-page) {
+    .vp-page {
+        padding: 0 !important;
+        max-width: none !important;
+    }
+
+    .vp-page > div {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    main.vp-page { padding-top: 0 !important; }
+
+    .vp-page-title,
+    .vp-breadcrumb,
+    .vp-page-meta,
+    .vp-page-nav,
+    .vp-toc-placeholder,
+    .vp-toc,
+    .vp-comment {
+        display: none !important;
+    }
+}
+
+// 修正 footnote-item 的大空白：改用 scroll-margin-top 處理 anchor 跳轉偏移
+.footnote-item {
+    padding-top: 0.5rem !important;
+    scroll-margin-top: var(--header-offset, 3.6rem);
+}
+
+// ==========================================================================
+// 文件頁通用 meta 區塊 (breadcrumb / page-meta / page-nav)
+// ==========================================================================
+
+.vp-breadcrumb {
+    font-size: 13px;
+    font-family: var(--font-sans);
+
+    .vp-breadcrumb-item {
+        color: var(--fg-3);
+
+        &.active { color: var(--ink-soft); font-weight: 600; }
+    }
+
+    .vp-breadcrumb-separator { color: var(--hairline); }
+
+    a { color: var(--fg-2) !important; text-decoration: none; &:hover { color: var(--mint-ink) !important; } }
+}
+
+.vp-page-meta {
+    font-size: 13px;
+    color: var(--fg-3);
+    font-family: var(--font-sans);
+    border-top: 2px dashed var(--hairline) !important;
+    padding-top: 16px !important;
+
+    .vp-meta-label { color: var(--fg-3); font-weight: 600; }
+
+    a { color: var(--mint-ink) !important; &:hover { color: var(--coral-600) !important; } }
+
+    // meta 完全空時隱藏，避免留下多餘間距
+    &:has(.git-info:empty):not(:has(.vp-meta-item:not(:empty))) {
+        display: none !important;
+    }
+}
+
+.vp-page-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 2px dashed var(--hairline) !important;
+    font-family: var(--font-sans);
+
+    .prev,
+    .next {
+        background: var(--card);
+        border: none !important;
+        border-radius: 16px;
+        box-shadow: var(--mascot-shadow-card);
+        padding: 16px 20px;
+        text-decoration: none;
+        transition: box-shadow .15s, transform .15s;
+
+        &:hover { box-shadow: 0 4px 0 var(--yellow-600); background: var(--card) !important; transform: translateY(-2px); }
+    }
+
+    .next { text-align: right; }
+
+    .link { font-size: 15px; font-weight: 600; color: var(--mint--ink); display: flex; align-items: center; gap: 8px; }
+    .next .link { justify-content: flex-end; }
+    .hint { font-size: 12px; color: var(--fg-3); margin-bottom: 4px; font-family: var(--font-mono); letter-spacing: .05em; }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+
+        .prev,
+        .next { padding: 14px 16px; }
+    }
+}
+
+// ==========================================================================
+// 部落格 / 常見問題 (BlogType) 列表頁 — mascot 風格
+// ==========================================================================
+
+.vp-blog-main {
+    background: var(--paper);
+    font-family: var(--font-sans);
+}
+
+// 統計數字（61文章、8分類…）
+.vp-blog-counts { gap: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--fg-3); }
+
+.vp-blog-count {
+    background: var(--card);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 12px;
+    box-shadow: var(--mascot-shadow-card);
+    text-decoration: none !important;
+    color: var(--fg-3) !important;
+
+    .count { color: var(--ink); font-weight: 700; }
+    &:hover { background: var(--yellow-100); }
+}
+
+// ------ 頂部文字型切換器（全部 / 星標 / 常見問題）-------------------
+.vp-article-type-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.vp-article-type {
+    background: var(--card);
+    border-radius: 999px;
+    box-shadow: var(--mascot-shadow-card);
+    overflow: hidden;
+    transition: box-shadow .15s;
+
+    a {
+        display: inline-flex;
+        padding: 7px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--fg-2) !important;
+        text-decoration: none !important;
+        &:hover { color: var(--ink) !important; }
+    }
+
+    &.active {
+        background: var(--yellow);
+        box-shadow: 0 4px 0 var(--yellow-600);
+        a { color: var(--ink) !important; }
+    }
+}
+
+// ------ 文章列表容器 ------------------------------------------------
+.vp-article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    align-items: start;
+
+    @media (max-width: 760px) { grid-template-columns: 1fr; }
+}
+
+// ------ 文章卡片（FAQ 知識庫風格重新排版）--------------------------
+.vp-article-item {
+    background: var(--card) !important;
+    border-radius: 18px !important;
+    box-shadow: var(--mascot-shadow-card) !important;
+    border: 1.5px solid var(--hairline) !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .15s, transform .15s;
+
+    &:hover {
+        box-shadow: 0 4px 0 var(--yellow-600) !important;
+        transform: translateY(-2px);
+    }
+}
+
+// 封面圖（如有）
+.vp-article-cover {
+    margin: 0;
+    overflow: hidden;
+    img { width: 100%; display: block; max-height: 160px; object-fit: cover; }
+}
+
+// 標題連結 — 包住整個 header，讓點擊範圍完整
+.vp-article-item > a.route-link {
+    text-decoration: none !important;
+    display: block;
+}
+
+.vp-article-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--ink) !important;
+    line-height: 1.5;
+    margin: 0 !important;
+    padding: 20px 20px 0;
+
+    // 連結顏色跟隨卡片 hover
+    .vp-article-item:hover & { color: var(--ink) !important; }
+
+    span { display: block; }
+}
+
+// Excerpt — 只顯示第一段純文字，隱藏 code / 圖片
+.vp-article-excerpt {
+    flex: 1;
+    padding: 8px 20px 0;
+    font-size: 13px;
+    color: var(--fg-2) !important;
+    line-height: 1.7;
+    margin: 0 !important;
+
+    // 隱藏所有非段落內容（code block、圖片、列表…）
+    > *:not(p) { display: none !important; }
+
+    p {
+        margin: 0 !important;
+        font-size: 13px !important;
+        color: var(--fg-2) !important;
+        line-height: 1.7;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        img { display: none !important; }  // 隱藏 <p><img> 結構的圖片
+    }
+}
+
+// HR 分隔線
+.vp-article-hr {
+    border: 0 !important;
+    border-top: 1px dashed var(--hairline-soft) !important;
+    margin: 12px 20px 0 !important;
+}
+
+// ------ page-info meta（作者 / 日期 / 分類 / 標籤）---------------
+.page-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-family: var(--font-sans);
+    color: var(--fg-3);
+
+    // 隱藏作者、日期（FAQ 不需要）
+    .page-author-info,
+    .page-date-info { display: none !important; }
+
+    // 閱讀時間 → mono 小字推到最右
+    .page-reading-time-info {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        margin-left: auto;
+        white-space: nowrap;
+
+        svg { display: none; }  // 隱藏 icon，只留數字
+    }
+
+    // 分類/標籤 icon svg 收起
+    .page-category-info > svg,
+    .page-tag-info > svg { display: none; }
+}
+
+// 分類 chip — 覆蓋 Hope color1-10 彩虹色系
+.page-category-item {
+    background: var(--mint-100) !important;
+    color: var(--mint-ink) !important;
+    border: 0 !important;
+    padding: 2px 9px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    font-family: var(--font-sans) !important;
+    cursor: pointer;
+    transition: background .15s;
+    display: inline-block;
+
+    &:hover { background: var(--mint) !important; color: #fff !important; }
+}
+
+// 標籤 chip — 灰色 mono pill
+.page-tag-item {
+    background: var(--hairline-soft) !important;
+    color: var(--fg-2) !important;
+    border: 0 !important;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-family: var(--font-mono) !important;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover { background: var(--yellow-100) !important; color: var(--yellow-ink) !important; }
+}
+
+// ------ 分頁 -------------------------------------------------------
+// 分頁導覽（在 vp-article-list grid 內需要 span 全欄）
+.vp-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+    font-family: var(--font-sans);
+    grid-column: 1 / -1;  // span 所有 grid 欄位
+}
+
+.vp-pagination-list { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+// 頁碼數字列（div.active, div 等）
+.vp-pagination-number {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    border: 0 !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+
+    > div {
+        min-width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        position: relative;
+        &::before { display: none !important; }
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--fg-2);
+        cursor: pointer;
+        background: var(--card);
+        box-shadow: var(--mascot-shadow-card);
+        transition: background .15s, box-shadow .15s;
+        user-select: none;
+
+        &:hover { background: var(--yellow-100); color: var(--ink); }
+
+        &.active {
+            background: var(--yellow) !important;
+            color: var(--ink) !important;
+            box-shadow: 0 4px 0 var(--yellow-600) !important;
+            cursor: default;
+        }
+
+        // 「下一頁/下一页」文字按鈕
+        &.next, &.prev {
+            background: transparent;
+            box-shadow: none;
+            color: var(--mint-ink);
+            font-family: var(--font-sans);
+            &:hover { background: var(--mint-50); }
+        }
+    }
+}
+
+// 「前往」input + button
+.vp-pagination-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--fg-3);
+
+    input {
+        width: 50px;
+        padding: 6px 10px;
+        border: 1px solid var(--hairline);
+        border-radius: 10px;
+        background: var(--card);
+        color: var(--ink-soft);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        text-align: center;
+        outline: none;
+        transition: border-color .15s;
+
+        &:focus { border-color: var(--mint); box-shadow: 0 0 0 3px var(--mint-50); }
+    }
+}
+
+.vp-pagination-button {
+    background: var(--card);
+    border: 0 !important;
+    border-radius: 10px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg-2);
+    cursor: pointer;
+    box-shadow: var(--mascot-shadow-card);
+    transition: box-shadow .15s, background .15s;
+
+    &:hover { background: var(--yellow-100); color: var(--ink); }
+}
+
+// ------ 標籤 / 分類 列表頁 ----------------------------------------
+.vp-tag-list,
+.vp-category-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.vp-tag-item,
+.vp-category-item {
+    background: var(--card);
+    border-radius: 999px;
+    box-shadow: var(--mascot-shadow-card);
+    overflow: hidden;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        color: var(--fg-2) !important;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none !important;
+        &:hover { color: var(--ink) !important; }
+    }
+
+    .vp-tag-count,
+    .vp-category-count {
+        padding: 1px 7px;
+    }
+}
+
+.vp-tag-item.active a     { background: var(--yellow); color: var(--ink) !important; }
+.vp-category-item.active a { background: var(--mint);  color: var(--mint-ink) !important; }
+
+// ---- 整合個人介紹卡（參考 diary.html about-card）----
+// .vp-blogger-info 包住 blogger + counts + social，作為整張卡
+.vp-blogger-info {
+    margin-top: 50px;
+}
+
+// Avatar 半懸浮在色條上
+.vp-blogger-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50% !important;
+    border: 4px solid var(--card) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+    margin-top: -50px;
+}
+
+.vp-blogger-name {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 20px 0 4px;
+}
+
+.vp-blogger-description {
+    font-size: 13px !important;
+    color: var(--fg-2) !important;
+}
+
+// ---- 統計數字 ---
+
+.vp-blog-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 8px;
+    background: var(--card);
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    color: var(--fg-3) !important;
+    transition: background .15s;
 }

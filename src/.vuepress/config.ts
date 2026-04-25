@@ -12,6 +12,10 @@ export default defineUserConfig({
     head: [
         // 網站圖標 favicon.ico
         ['link', {rel: 'icon', href: '/logo.ico'}],
+        // Mascot 風格字體 (Noto Sans TC + Roboto Mono)
+        ['link', {rel: 'preconnect', href: 'https://fonts.googleapis.com'}],
+        ['link', {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: ''}],
+        ['link', {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap'}],
         // Google Console search html 擁有全驗證
         ['meta', {name: 'google-site-verification', content: 'AdvLMReW9RFoWDOXEAm_koqL82b1ZwwKxlgrhaQtRnQ'}],
         // Google Tag Manager 埋 code
@@ -168,7 +172,7 @@ export default defineUserConfig({
                 page.frontmatter.sitemap = { priority: 0.8, changefreq: 'monthly' };
             } else if (rel.startsWith('guide/')) {
                 page.frontmatter.sitemap = { priority: 0.7, changefreq: 'monthly' };
-            } else if (rel.startsWith('fqa/')) {
+            } else if (rel.startsWith('faq/')) {
                 page.frontmatter.sitemap = { priority: 0.5, changefreq: 'yearly' };
             } else if (rel === 'LanYu.md') {
                 page.frontmatter.sitemap = { priority: 0.4, changefreq: 'monthly' };
@@ -177,7 +181,7 @@ export default defineUserConfig({
 
         // T-04：為所有 FAQ 頁面自動注入 QAPage Schema
         // 使用 page.title（從 H1 取得），而非 page.frontmatter.title（FAQ 頁沒有設此欄位）
-        if (!page.filePathRelative?.startsWith('fqa/')) return;
+        if (!page.filePathRelative?.startsWith('faq/')) return;
         const title = page.title;
         const description = page.frontmatter.description as string | undefined;
         if (!title) return;
