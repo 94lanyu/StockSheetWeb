@@ -69,6 +69,239 @@ body {
 }
 
 // ==========================================================================
+// Dark Mode — Mascot Night 暗色主題
+// 觸發器：html[data-theme="dark"]（由 vuepress-theme-hope Outlook 元件寫入）
+// ==========================================================================
+
+html[data-theme="dark"] {
+    // --- 基礎底色 -----------------------------------------------------------
+    --paper:         #181310;
+    --card:          #241D18;
+    --ink:           #F2EBE0;
+    --ink-soft:      #D4C8BB;
+    --fg-1:          #B3A598;
+    --fg-2:          #987E72;
+    --fg-3:          #74665C;
+    --hairline:      #3C2E24;
+    --hairline-soft: #2B2018;
+
+    // --- 品牌色調整（深色底下的 tint 要改為深色版本）----------------------
+    --mint-100:   #1B3835;
+    --mint-50:    #121E1D;
+    --mint-ink:   #A0DDD4;
+
+    --coral-100:  #3F1F1C;
+    --coral-600:  #FF8573;
+
+    --yellow-100: #2F280A;
+    --yellow-ink: #FFE066;
+
+    --blue-100:   #182845;
+    --indigo-100: #1D2040;
+    --green-100:  #172B20;
+    --green:      #4DBB8A;
+
+    // --- 陰影（深色底下改用半透明黑）--------------------------------------
+    --mascot-shadow-card:    0 4px 0 rgba(0,0,0,.5);
+    --mascot-shadow-card-hl: 0 4px 0 var(--yellow-600);
+
+    // --- VuePress Hope CSS 變數覆寫 ----------------------------------------
+    --vp-c-bg:        var(--paper);
+    --vp-c-bg-alt:    var(--hairline-soft);
+    --vp-c-bg-elv:    var(--card);
+    --vp-c-text:      var(--ink);
+    --vp-c-text-mute: var(--fg-3);
+    --vp-c-border:    var(--hairline);
+    --vp-c-divider:   var(--hairline);
+}
+
+// body / app 底色跟隨 dark 變數
+html[data-theme="dark"] body,
+html[data-theme="dark"] #app {
+    background: var(--paper);
+    color: var(--ink-soft);
+}
+
+// Navbar 深色背景（原本是 hardcode 的暖白色，需覆寫）
+html[data-theme="dark"] .vp-navbar {
+    background: rgba(24, 19, 16, 0.93) !important;
+    border-bottom: 1px solid var(--hairline) !important;
+}
+
+// Footer 在深色模式要更深（否則 --ink 在 dark 會變成淺色）
+html[data-theme="dark"] .vp-footer-wrapper {
+    background: #0E0A08 !important;
+}
+
+// Dropdown popover 深色
+html[data-theme="dark"] .vp-dropdown {
+    background: var(--card) !important;
+    border-color: var(--hairline) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.45) !important;
+}
+
+// Sidebar 深色
+html[data-theme="dark"] .vp-sidebar {
+    background: var(--paper) !important;
+    border-right-color: var(--hairline) !important;
+}
+
+// 代碼塊底色（shiki 主題已有 dark/light，補整體 wrapper 圓角背景）
+html[data-theme="dark"] div[class*="language-"] {
+    background: #1E1613;
+}
+
+// 行內 code 深色
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) :not(pre) > code {
+    background: #2E2218;
+    color: var(--coral-600);
+}
+
+// 表格深色
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) table {
+    background: var(--card);
+    thead th { background: var(--yellow) !important; }
+    tbody tr { border-top-color: var(--hairline); }
+}
+
+// blockquote 深色
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) blockquote {
+    background: var(--card);
+}
+
+// hint-container 深色
+html[data-theme="dark"] .hint-container,
+html[data-theme="dark"] .custom-container {
+    background: var(--mint-100);
+    &.tip     { background: var(--yellow-100); }
+    &.info    { background: var(--mint-100); }
+    &.warning { background: var(--coral-100); }
+    &.danger, &.caution { background: var(--coral-100); }
+}
+
+// page-nav 深色
+html[data-theme="dark"] .vp-page-nav .prev,
+html[data-theme="dark"] .vp-page-nav .next {
+    background: var(--card);
+    &:hover { background: var(--card) !important; }
+}
+
+// 文章卡片深色
+html[data-theme="dark"] .vp-article-item {
+    background: var(--card) !important;
+    border-color: var(--hairline) !important;
+}
+
+// 分頁數字深色
+html[data-theme="dark"] .vp-pagination-number > div {
+    background: var(--card);
+}
+
+html[data-theme="dark"] .vp-pagination-button {
+    background: var(--card);
+}
+
+// tag / category chip 深色
+html[data-theme="dark"] .vp-tag-item,
+html[data-theme="dark"] .vp-category-item {
+    background: var(--card);
+}
+// /tag/ /category/ 頁面：Hope colorX 彩虹底色在深色模式下配白字，確保對比
+html[data-theme="dark"] .vp-tag-item a,
+html[data-theme="dark"] .vp-category-item a {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+// active 狀態：黃底 / 薄荷底 → 改深字
+html[data-theme="dark"] .vp-tag-item.active a {
+    color: #2A2420 !important;
+}
+
+// Blog count pill 深色
+html[data-theme="dark"] .vp-blog-count {
+    background: var(--card);
+}
+
+// article-type 切換器：非 active 狀態底色跟隨 card（active 保留黃底，不覆寫）
+html[data-theme="dark"] .vp-article-type:not(.active) {
+    background: var(--card);
+}
+
+// back-to-top 深色
+html[data-theme="dark"] .vp-back-to-top-button {
+    background: var(--card) !important;
+    border-color: var(--hairline) !important;
+}
+
+// ==========================================================================
+// Dark Mode 修正：黃底元素 → 強制深色文字
+// 問題：--ink 在 dark mode 為淡色（#F2EBE0），放在黃底上幾乎看不到
+// 規則：background = yellow (#FFE066) 時，text 固定用原始深色 #2A2420
+// ==========================================================================
+
+// Issue 1 — Sidebar 選中項目
+html[data-theme="dark"] .vp-sidebar a.route-link-active,
+html[data-theme="dark"] .vp-sidebar a.active {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — Navbar 下拉選單選中項目
+html[data-theme="dark"] .vp-dropdown .vp-dropdown-item > .auto-link.route-link-active,
+html[data-theme="dark"] .vp-dropdown .vp-dropdown-subitem > .auto-link.route-link-active {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — 文章類型切換 tab 選中（全部 / 星標 / 常見問題）
+html[data-theme="dark"] .vp-article-type.active,
+html[data-theme="dark"] .vp-article-type.active a {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — 分頁 active 頁碼
+html[data-theme="dark"] .vp-pagination-number > div.active {
+    color: #2A2420 !important;
+}
+
+// Issue 1 — 右側 Blog info icon 切換按鈕（文章 / 分類 / 標籤 / 時間軸）
+html[data-theme="dark"] .vp-blog-info-wrapper button.active,
+html[data-theme="dark"] .vp-blog-panel-control .active {
+    color: #2A2420 !important;
+}
+
+// Issue 2 — 表格 header（黃底）文字強制深色
+// 需匹配原始 selector `.vp-page:not(:has(.mascot-page)) table thead th` 的優先度
+html[data-theme="dark"] .vp-page:not(:has(.mascot-page)) table thead th {
+    color: #2A2420 !important;
+}
+
+// Issue 3 — 文章 tag chip：提高對比度
+// 深色模式下 hairline-soft (#2B2018) 配 fg-2 (#987E72) 幾乎無對比
+html[data-theme="dark"] .page-tag-item {
+    background: #3D3028 !important;   // 稍亮的暖棕，讓 chip 跳脫背景
+    color: #C8B0A0 !important;        // 更亮的文字，確保可讀性
+
+    &:hover {
+        background: var(--yellow-100) !important;
+        color: var(--yellow-ink) !important;
+    }
+}
+
+// 首頁 preview chips：scoped color: var(--fg-2) 在深色模式下太暗
+html[data-theme="dark"] .preview-chips .chip {
+    color: var(--ink-soft) !important;
+    border-color: var(--hairline) !important;
+}
+
+// 首頁 pillbtn 按鈕深色修正
+// .mint：薄荷底色配薄荷文字 → 改深字（#1B3835 在 #7FCEC0 上對比 ≈ 8.5:1）
+html[data-theme="dark"] .pillbtn.mint {
+    color: #1B3835 !important;
+}
+// .ghost：白底配 --ink-soft（淡米色）→ 改深字
+html[data-theme="dark"] .pillbtn.ghost {
+    color: #2A2420 !important;
+}
+
+// ==========================================================================
 // 首頁 MascotHome 元件樣式 (blob / button / heading)
 // ==========================================================================
 
@@ -148,8 +381,8 @@ body {
             position: absolute;
             left: -4px;
             right: -4px;
-            bottom: 6px;
-            height: 16px;
+            bottom: -4px;
+            height: 12px;
             background: var(--yellow);
             z-index: -1;
             border-radius: 4px;

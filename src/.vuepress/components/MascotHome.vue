@@ -176,8 +176,8 @@
 
 <style lang="scss" scoped>
 .mascot-page {
-  background: #FFF8F0;
-  color: #3C3430;
+  background: var(--paper);
+  color: var(--ink-soft);
   font-family: var(--font-sans);
   overflow-x: hidden;
   min-height: 100vh;
@@ -216,7 +216,7 @@
 
 .lead {
   font-size: 19px;
-  color: #6B5D56;
+  color: var(--fg-2);
   margin: 22px 0 28px;
   line-height: 1.7;
   max-width: 500px;
@@ -235,9 +235,9 @@
   gap: 14px;
   margin-top: 26px;
   font-size: 13px;
-  color: #8A7F77;
+  color: var(--fg-3);
 
-  b { color: #3C3430; }
+  b { color: var(--ink-soft); }
 }
 
 .avatars {
@@ -247,18 +247,18 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid #FFF8F0;
+    border: 2px solid var(--paper);
     margin-left: -8px;
-    background: #D7EFEA;
+    background: var(--mint-100);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
 
     &:first-child { margin-left: 0; }
-    &.a2 { background: #FFE2DC; }
-    &.a3 { background: #FFF1C2; }
-    &.a4 { background: #CCE0F4; }
+    &.a2 { background: var(--coral-100); }
+    &.a3 { background: var(--yellow-100); }
+    &.a4 { background: var(--blue-100); }
   }
 }
 
@@ -329,12 +329,12 @@
   position: absolute;
   top: 40px;
   right: -20px;
-  background: #fff;
+  background: var(--card);
   padding: 12px 18px;
   border-radius: 20px;
   font-size: 14px;
-  color: #3C3430;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color: var(--ink-soft);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
   z-index: 3;
   font-weight: 500;
 
@@ -345,19 +345,19 @@
     bottom: -8px;
     width: 16px;
     height: 16px;
-    background: #fff;
+    background: var(--card);
     clip-path: polygon(0 0, 100% 0, 0 100%);
   }
 }
 
 .sticker {
   position: absolute;
-  background: #fff;
+  background: var(--card);
   padding: 10px 14px;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
   font-size: 13px;
-  color: #3C3430;
+  color: var(--ink-soft);
   z-index: 3;
   font-family: var(--font-mono);
 
@@ -365,7 +365,7 @@
   &.s2 { bottom: 80px; left: -10px;   transform: rotate(4deg); }
   &.s3 { bottom: 120px; right: 20px;  transform: rotate(5deg); }
 
-  .k { font-size: 10px; color: #8A7F77; font-family: var(--font-sans); }
+  .k { font-size: 10px; color: var(--fg-3); font-family: var(--font-sans); }
   .v { font-size: 18px; font-weight: 500; }
 }
 
@@ -379,39 +379,39 @@
 }
 
 .step {
-  background: #fff;
+  background: var(--card);
   border-radius: 24px;
   padding: 28px;
   position: relative;
-  box-shadow: 0 4px 0 #E6DDD4;
+  box-shadow: 0 4px 0 var(--hairline);
 
   .step-num {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #FFE066;
+    background: var(--yellow);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 18px;
-    color: #3C3430;
+    color: var(--ink-soft);
     margin-bottom: 16px;
     font-family: var(--font-mono);
   }
 
-  &.mint  .step-num { background: #7FCEC0; color: #fff; }
-  &.coral .step-num { background: #FF9B8A; color: #fff; }
+  &.mint  .step-num { background: var(--mint);  color: #fff; }
+  &.coral .step-num { background: var(--coral); color: #fff; }
 
   h3 {
     font-size: 18px;
     margin: 0 0 8px;
-    color: #2A2420;
+    color: var(--ink);
     font-weight: 600;
   }
 
   p {
-    color: #6B5D56;
+    color: var(--fg-2);
     font-size: 14px;
     line-height: 1.7;
     margin: 0;
@@ -441,10 +441,10 @@
 .preview-frame {
   margin: 36px auto 0;
   max-width: 920px;
-  background: #fff;
+  background: var(--card);
   border-radius: 20px;
   box-shadow:
-    0 2px 0 #E6DDD4,
+    0 2px 0 var(--hairline),
     0 24px 64px rgba(60, 52, 48, .14),
     0 64px 140px rgba(60, 52, 48, .06);
   overflow: hidden;
@@ -457,21 +457,21 @@
 }
 
 .preview-bar {
-  background: #F5EFEB;
+  background: var(--hairline-soft);
   padding: 11px 16px;
   display: flex;
   align-items: center;
   gap: 6px;
-  border-bottom: 1px solid #E6DDD4;
+  border-bottom: 1px solid var(--hairline);
 
   .dot {
     width: 11px;
     height: 11px;
     border-radius: 50%;
     flex-shrink: 0;
-    &.r { background: #FF9B8A; }
-    &.y { background: #FFE066; }
-    &.g { background: #7FCEC0; }
+    &.r { background: var(--coral); }
+    &.y { background: var(--yellow); }
+    &.g { background: var(--mint); }
   }
 }
 
@@ -479,9 +479,9 @@
   flex: 1;
   text-align: center;
   font-size: 11px;
-  color: #8A7F77;
+  color: var(--fg-3);
   font-family: var(--font-mono);
-  background: #fff;
+  background: var(--card);
   border-radius: 6px;
   padding: 3px 10px;
   margin: 0 32px;
@@ -503,14 +503,14 @@
   margin-top: 28px;
 
   .chip {
-    background: #fff;
-    border: 1.5px solid #E6DDD4;
+    background: var(--card);
+    border: 1.5px solid var(--hairline);
     border-radius: 20px;
     padding: 6px 16px;
     font-size: 13px;
-    color: #6B5D56;
+    color: var(--fg-2);
     font-weight: 500;
-    box-shadow: 0 2px 0 #E6DDD4;
+    box-shadow: 0 2px 0 var(--hairline);
   }
 }
 
@@ -524,7 +524,7 @@
 }
 
 .fcard {
-  background: #fff;
+  background: var(--card);
   border-radius: 22px;
   padding: 26px;
   position: relative;
@@ -533,7 +533,7 @@
   text-decoration: none;
   color: inherit;
   display: block;
-  box-shadow: 0 4px 0 #E6DDD4;
+  box-shadow: 0 4px 0 var(--hairline);
 
   &:hover { transform: translateY(-4px) rotate(-1deg); }
 
@@ -551,21 +551,21 @@
   h4 {
     font-size: 17px;
     margin: 0 0 6px;
-    color: #2A2420;
+    color: var(--ink);
     font-weight: 600;
   }
 
   p {
     font-size: 14px;
-    color: #6B5D56;
+    color: var(--fg-2);
     line-height: 1.65;
     margin: 0;
   }
 
-  &.c1 .ic, &.c5 .ic { background: #FFE2DC; }
-  &.c2 .ic, &.c6 .ic { background: #D7EFEA; }
-  &.c3 .ic           { background: #FFF1C2; }
-  &.c4 .ic           { background: #E0E7FF; }
+  &.c1 .ic, &.c5 .ic { background: var(--coral-100); }
+  &.c2 .ic, &.c6 .ic { background: var(--mint-100);  }
+  &.c3 .ic           { background: var(--yellow-100); }
+  &.c4 .ic           { background: var(--indigo-100); }
 }
 
 // CTA -----------------------------------------------------------
