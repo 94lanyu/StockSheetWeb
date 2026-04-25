@@ -178,7 +178,8 @@
 // HERO -----------------------------------------------------------
 .hero {
   position: relative;
-  padding: 100px 0 60px;
+  padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .hero-grid {
@@ -307,7 +308,7 @@
   right: -20px;
   background: #fff;
   padding: 12px 18px;
-  border-radius: 20px 20px 4px 20px;
+  border-radius: 20px;
   font-size: 14px;
   color: #3C3430;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
@@ -317,12 +318,12 @@
   &::after {
     content: "";
     position: absolute;
-    right: 12px;
+    left: 12px;
     bottom: -8px;
     width: 16px;
     height: 16px;
     background: #fff;
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
   }
 }
 
@@ -346,7 +347,7 @@
 }
 
 // STEPS ---------------------------------------------------------
-.steps { padding: 80px 0 60px; position: relative; }
+.steps { padding-top: 80px; padding-bottom: 60px; position: relative; }
 
 .steps-grid {
   display: grid;
@@ -395,7 +396,7 @@
 }
 
 // FEATURES ------------------------------------------------------
-.features { padding: 80px 0; position: relative; }
+.features { padding-top: 80px; padding-bottom: 80px; position: relative; }
 
 .fgrid {
   display: grid;
@@ -449,7 +450,7 @@
 }
 
 // CTA -----------------------------------------------------------
-.cta { padding: 80px 0 100px; }
+.cta { padding-top: 80px; padding-bottom: 100px; }
 
 .cta-card {
   background: #2A2420;

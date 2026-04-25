@@ -580,9 +580,9 @@ body {
         font-size: 13px;
         padding: 4px 16px;
         color: var(--fg-2);
-        border-left: 2px solid transparent;
+        border-left: 0 !important;
         line-height: 1.6;
-        transition: color .15s ease, border-color .15s ease;
+        transition: color .15s ease;
 
         &:hover { color: var(--ink) !important; }
     }
@@ -590,12 +590,11 @@ body {
     .vp-toc-item.active > .vp-toc-link {
         color: var(--ink) !important;
         font-weight: 600;
-        border-left-color: var(--mint) !important;
     }
 
-    // hope 的直線 / marker 用 mint
+    // marker 是唯一的進度指示線
     .vp-toc-wrapper > .vp-toc-list::before {
-        background: var(--hairline-soft) !important;
+        display: none !important;
     }
 
     .vp-toc-marker {

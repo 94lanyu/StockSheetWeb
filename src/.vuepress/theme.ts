@@ -74,10 +74,14 @@ export default hopeTheme({
         },
     },
 
+    print: false,
+
     metaLocales: {
         prev: "上一篇",
         next: "下一篇",
         toc: "本頁目錄",
+        category: "分類",
+        tag: "標籤",
     },
 
     paginationLocales: {
