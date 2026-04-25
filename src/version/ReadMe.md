@@ -2,7 +2,7 @@
 lang: zh-TW
 title: 版本
 icon: file-pen
-prev: ../sheets/融資券
+prev: ../guide/sheets/融資券
 ---
 
 在 [指南](../) 內主要是介紹 台股訂閱版 的功能

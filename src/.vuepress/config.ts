@@ -166,7 +166,7 @@ export default defineUserConfig({
         if (rel) {
             if (rel === 'README.md') {
                 page.frontmatter.sitemap = { priority: 1.0, changefreq: 'weekly' };
-            } else if (rel.startsWith('guide/version/')) {
+            } else if (rel.startsWith('version/')) {
                 page.frontmatter.sitemap = { priority: 0.9, changefreq: 'weekly' };
             } else if (rel.startsWith('guide/feature/')) {
                 page.frontmatter.sitemap = { priority: 0.8, changefreq: 'monthly' };

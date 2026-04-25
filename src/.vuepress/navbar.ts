@@ -49,7 +49,7 @@ export default navbar([
     {
         text: "版本",
         icon: "file-pen",
-        prefix: "/guide/version/",
+        prefix: "/version/",
         children: [
             "",
             "台股訂閱版",

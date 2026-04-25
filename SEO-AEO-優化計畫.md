@@ -130,8 +130,8 @@
 
 **需要處理的頁面（優先順序）**
 
-1. `/guide/version/台股訂閱版.md`
-2. `/guide/version/美股收費版.md`
+1. `/version/台股訂閱版.md`
+2. `/version/美股收費版.md`
 3. `/guide/` (使用指南首頁)
 4. `/guide/feature/自動更新股票成交價.md`
 5. `/guide/feature/多種視覺化圖表.md`
@@ -395,7 +395,7 @@ sitemap: {
 | 路徑 | priority | changefreq |
 |------|---------|-----------|
 | `/` | 1.0 | weekly |
-| `/guide/version/*` | 0.9 | weekly |
+| `/version/*` | 0.9 | weekly |
 | `/guide/feature/*` | 0.8 | monthly |
 | `/guide/sheets/*` | 0.7 | monthly |
 | `/faq/` | 0.7 | weekly |

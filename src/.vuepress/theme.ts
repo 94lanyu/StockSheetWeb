@@ -44,9 +44,9 @@ export default hopeTheme({
         </div>
         <div class="mf-col">
           <h4>產品</h4>
-          <a href="/guide/version/台股訂閱版.html">台股訂閱版</a>
-          <a href="/guide/version/美股收費版.html">美股收費版</a>
-          <a href="/guide/version/客製化.html">客製化版本</a>
+          <a href="/version/台股訂閱版.html">台股訂閱版</a>
+          <a href="/version/美股收費版.html">美股收費版</a>
+          <a href="/version/客製化.html">客製化版本</a>
         </div>
         <div class="mf-col">
           <h4>資源</h4>
@@ -75,6 +75,9 @@ export default hopeTheme({
     },
 
     print: false,
+
+    contributors: false,
+    lastUpdated: false,
 
     metaLocales: {
         prev: "上一篇",

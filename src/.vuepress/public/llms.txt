@@ -33,9 +33,9 @@
 
 ## 版本與費用
 
-- [台股訂閱版](https://94lanyu.github.io/guide/version/%E5%8F%B0%E8%82%A1%E8%A8%82%E9%96%B1%E7%89%88.html): 主版本，支援台股，訂閱制費用 600元/3月、1,800元/年
-- [美股收費版](https://94lanyu.github.io/guide/version/%E7%BE%8E%E8%82%A1%E6%94%B6%E8%B2%BB%E7%89%88.html): 美股專用版本，NT$3,000，支援美股指數與匯率換算
-- [客製化](https://94lanyu.github.io/guide/version/%E5%AE%A2%E8%A3%BD%E5%8C%96.html): 跨市場總覽、權證版、港股版、歐股版等客製案例
+- [台股訂閱版](https://94lanyu.github.io/version/%E5%8F%B0%E8%82%A1%E8%A8%82%E9%96%B1%E7%89%88.html): 主版本，支援台股，訂閱制費用 600元/3月、1,800元/年
+- [美股收費版](https://94lanyu.github.io/version/%E7%BE%8E%E8%82%A1%E6%94%B6%E8%B2%BB%E7%89%88.html): 美股專用版本，NT$3,000，支援美股指數與匯率換算
+- [客製化](https://94lanyu.github.io/version/%E5%AE%A2%E8%A3%BD%E5%8C%96.html): 跨市場總覽、權證版、港股版、歐股版等客製案例
 - [訂閱費用](https://94lanyu.github.io/guide/include/%E8%A8%82%E9%96%B1%E8%B2%BB%E7%94%A8.html): 完整費用方案對照表（3月、年、3年、5年）
 - [付款方式](https://94lanyu.github.io/guide/include/%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F.html): 信用卡與銀行轉帳付款流程
 
