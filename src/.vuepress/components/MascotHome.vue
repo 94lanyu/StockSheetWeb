@@ -17,7 +17,7 @@
           </h1>
           <p class="lead">
             只需做好交易紀錄，其餘的都幫你搞定 ～ ✨ <br />
-            一張會自己算錢、自己畫圖的 Google 試算表 — 加上一隻認真的貓。
+            一張會自己算錢、自己畫圖的 Google 試算表 — 加上一隻比你更認真的懶魚。
           </p>
           <div class="cta-row">
             <a href="https://forms.gle/RsfJdnReB1pzahQM6" target="_blank" rel="noopener" class="pillbtn">
@@ -56,7 +56,7 @@
 
     <section class="steps shell">
       <h2 class="section-h">只要三步，就開始。</h2>
-      <div class="section-sub">不用綁信用卡、不用下載 App、甚至不用打字太多。</div>
+      <div class="section-sub">不用綁信用卡、不用下載 App、三步就全搞定。</div>
       <div class="steps-grid">
         <div class="step">
           <div class="step-num">1</div>
@@ -107,7 +107,7 @@
         <a href="/guide/feature/自動更新股票成交價.html" class="fcard c1">
           <div class="ic">📈</div>
           <h4>自動更新成交價</h4>
-          <p>開啟試算表就幫你抓最新行情，台股美股歐股港股都行。</p>
+          <p>開啟就自動抓台股最新股價，不用手動更新。</p>
         </a>
         <a href="/guide/feature/自動化計算.html" class="fcard c2">
           <div class="ic">🧮</div>
@@ -122,7 +122,7 @@
         <a href="/guide/feature/自動記錄投資變化.html" class="fcard c4">
           <div class="ic">📸</div>
           <h4>每週自動快照</h4>
-          <p>每周五盤後留一筆歷史紀錄，一年後就有時間軸了。</p>
+          <p>每周六留一筆歷史紀錄，一年後就有時間軸了。</p>
         </a>
         <a href="/guide/feature/輕鬆管理多家券商.html" class="fcard c5">
           <div class="ic">🏦</div>
@@ -140,7 +140,7 @@
     <section class="cta shell">
       <div class="cta-card">
         <div>
-          <h3>準備好讓一隻貓<br />幫你算帳了嗎？</h3>
+          <h3>準備好讓懶魚<br />幫你算帳了嗎？</h3>
           <p>填一張表、收一封信。不用三分鐘，就有自己的股票管理試算表。</p>
           <div class="cta-row">
             <a href="https://forms.gle/RsfJdnReB1pzahQM6" target="_blank" rel="noopener" class="pillbtn mint">
