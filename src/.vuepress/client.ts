@@ -4,6 +4,7 @@ import MascotHome from './components/MascotHome.vue';
 import FreeTrialButton from './components/FreeTrialButton.vue';
 import SubscribeButton from './components/SubscribeButton.vue';
 import Mascot404 from './components/Mascot404.vue';
+import ActivationGuide from './components/ActivationGuide.vue';
 
 export default defineClientConfig({
     layouts: {
@@ -15,6 +16,7 @@ export default defineClientConfig({
         // 注冊成全域元件，navbarLayout.end 才看得到
         app.component('FreeTrial', FreeTrialButton);
         app.component('Subscribe', SubscribeButton);
+        app.component('ActivationGuide', ActivationGuide);
     },
     setup() {
         let sidebarHandler: (() => void) | null = null;

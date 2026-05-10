@@ -74,6 +74,9 @@
           <p>第一次打開時會請你授權讀取行情。之後它就自己跑了。</p>
         </div>
       </div>
+      <div class="steps-cta">
+        <a href="/guide/" class="steps-cta-btn">📖 查看完整使用說明</a>
+      </div>
     </section>
 
     <section class="preview shell">
@@ -376,6 +379,28 @@
     line-height: 1.7;
     margin: 0;
   }
+}
+
+.steps-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.steps-cta-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid var(--mint, #7FCEC0);
+  border-radius: 999px;
+  color: var(--mint-dark, #1A4A42);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.steps-cta-btn:hover {
+  background: rgba(127, 206, 192, 0.13);
+  text-decoration: none;
 }
 
 // PREVIEW -------------------------------------------------------

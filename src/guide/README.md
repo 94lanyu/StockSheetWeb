@@ -22,46 +22,17 @@ next: feature/
 
 台股訂閱版 提供一個月的免費試用時間，喜歡再訂閱！
 
-## 簡單 3 步驟立即使用
-
-1. [填寫免費試用表單(點我) ](https://forms.gle/Qfh7kG7sCcBeNbcg7)
-2. 在 Gmail 信箱收信，透過信件內連結複製屬於自己的試算表 → 建立副本 ( 複製一份自己的 )
-
-    ::: details 信件示意圖
-    ![免費試用表單送出後的 Gmail 通知信件示意圖](/images/啟用步驟/試用表單信件.jpg)
-    :::
-
-3. 啟用並授權
-
-    ::: tip
-    參考 [開始使用 > 第一次使用 > 1. 啟用並授權](#第一次使用)
-    :::
-
+[填寫免費試用表單（點我）](https://forms.gle/Qfh7kG7sCcBeNbcg7)
 
 ## 開始使用
 
+#### 申請後接下來怎麼做？
+
+<ActivationGuide />
+
 #### 第一次使用
 
-1. 啟用並授權
-
-    ::: details 啟用示意圖
-    1. 在試算表內點選【儀表版】分頁的按鈕 ➡ <Badge>更新儀表板</Badge>
-        ![啟用步驟 — 點選儀表板分頁的更新儀表板按鈕](/images/啟用步驟/啟用步驟_0更新儀表板.jpg)
-    2. 需要授權 ➡ 點選 __「確認」__
-        ![啟用步驟 — 需要授權提示視窗，點選確認](/images/啟用步驟/啟用步驟_1需要授權.jpg =300x)
-    3. 選擇帳戶 ➡ 選擇自己的 Google 帳戶
-        ![啟用步驟 — 選擇 Google 帳號授權頁面](/images/啟用步驟/啟用步驟_2選擇自己的Google帳號.jpg =300x)
-    4. 未經 Google 驗證[^first] ➡ 點選 __「進階」__ ➡ 點選 __「前往AppScript | 全自動股票管理表(不安全)」__
-        ![啟用步驟 — 點選進階選項](/images/啟用步驟/啟用步驟_3選擇進階.jpg =330x) ![啟用步驟 — 點選前往全自動股票管理表](/images/啟用步驟/啟用步驟_4前往.jpg =330x)
-    5. 存取您的 Google 帳戶 ➡ 點選按鈕 <Badge type="tip">允許</Badge>
-        ![啟用步驟 — 點選允許授權存取 Google 帳戶](/images/啟用步驟/啟用步驟_5允許.jpg =x400)
-    6. 再次點選【儀表版】分頁的按鈕 ➡ <Badge>更新儀表板</Badge> 並顯示「==指令碼 執行完成==」字樣
-        ![啟用步驟 — 顯示指令碼執行完成訊息](/images/啟用步驟/啟用步驟_7指令碼執行完成.jpg)
-    7. 試算表 ➡ 顯示「啟用成功」
-        ![啟用步驟 — 顯示啟用成功訊息](/images/啟用步驟/啟用步驟_6成功.jpg =300x)
-    :::
-
-   <iframe src="https://www.youtube.com/embed/e2Xh9q0CgO8?si=8wQgyNFPTdXRRifP" title="啟用示範影片" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+1. 啟用並授權（參考上方步驟圖）
 
 2. 第一次需要設定券商的手續費折數優惠以及進位方式
 
@@ -116,17 +87,3 @@ next: feature/
 - 登錄限訂閱者==首次訂閱成功的 10 天之內==
 :::
 
-#### 註釋
-
-[^first]: 未經 Google 驗證
-
-    ::: note 為了使試算表能更加方便、自動化，有寫入一些程式碼做輔助
-
-    ex.「抓取現價」「一鍵更新」「收費版的自動記錄並圖表化」等
-    
-    這些功能會需要相應的授權才能使用，若不授權基本上沒辦法使用
-
-    此範本已有眾多的人在使用，程式碼也有經過眾人的建議和檢核請放心使用
-
-    ::: danger 如果仍有疑慮的話，請勿使用此範本
-    :::
